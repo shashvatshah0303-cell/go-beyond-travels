@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Go Beyond Travels</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8C97A;
+    --navy: #0A1628;
+    --navy-mid: #162240;
+    --teal: #1D9E75;
+    --white: #FFFFFF;
+    --off-white: #F8F6F0;
+    --text-dark: #1A1A2E;
+    --text-muted: #6B7280;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--white); color: var(--text-dark); overflow-x: hidden; }
+
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 2rem; height: 68px;
+    background: rgba(10,22,40,0.95); backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+    transition: all 0.3s;
+  }
+  .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .logo-icon {
+    width: 38px; height: 38px; background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px;
+  }
+  .logo-text { color: var(--white); font-size: 20px; font-weight: 700; letter-spacing: -0.3px; }
+  .logo-text span { color: var(--gold); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { color: rgba(255,255,255,0.85); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-cta {
+    background: var(--gold); color: var(--navy); padding: 9px 20px;
+    border-radius: 8px; font-size: 14px; font-weight: 600; text-decoration: none;
+    transition: all 0.2s; border: none; cursor: pointer;
+  }
+  .nav-cta:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+  .hero {
+    min-height: 100vh; position: relative; display: flex; align-items: center; justify-content: center;
+    background: var(--navy); overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: url('https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1600&q=80') center/cover no-repeat;
+    opacity: 0.35;
+    animation: heroZoom 20s ease-in-out infinite alternate;
+  }
+  @keyframes heroZoom { from { transform: scale(1); } to { transform: scale(1.08); } }
+  .hero-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to bottom, rgba(10,22,40,0.6) 0%, rgba(10,22,40,0.3) 50%, rgba(10,22,40,0.85) 100%);
+  }
+  .hero-content { position: relative; z-index: 2; text-align: center; padding: 0 1.5rem; max-width: 850px; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(201,168,76,0.15); border: 1px solid rgba(201,168,76,0.4);
+    color: var(--gold); padding: 7px 16px; border-radius: 50px; font-size: 13px; font-weight: 500;
+    margin-bottom: 1.5rem; animation: fadeInUp 0.6s ease both;
+  }
+  .hero-title {
+    font-size: clamp(2.8rem, 6vw, 5rem); font-weight: 800; color: var(--white);
+    line-height: 1.1; letter-spacing: -1px; margin-bottom: 1.2rem;
+    animation: fadeInUp 0.6s 0.15s ease both;
+  }
+  .hero-title .accent { color: var(--gold); }
+  .hero-subtitle {
+    font-size: 1.15rem; color: rgba(255,255,255,0.75); max-width: 560px; margin: 0 auto 2.5rem;
+    line-height: 1.7; animation: fadeInUp 0.6s 0.3s ease both;
+  }
+  .hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; animation: fadeInUp 0.6s 0.45s ease both; }
+  .btn-primary {
+    background: var(--gold); color: var(--navy); padding: 14px 32px;
+    border-radius: 10px; font-size: 15px; font-weight: 700; text-decoration: none;
+    transition: all 0.25s; border: none; cursor: pointer; display: inline-block;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201,168,76,0.35); }
+  .btn-outline {
+    background: transparent; color: var(--white); padding: 14px 32px;
+    border: 1.5px solid rgba(255,255,255,0.4); border-radius: 10px;
+    font-size: 15px; font-weight: 600; text-decoration: none;
+    transition: all 0.25s; cursor: pointer;
+  }
+  .btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.1); }
+
+  .search-bar {
+    position: relative; z-index: 2; max-width: 780px; margin: -30px auto 0;
+    background: var(--white); border-radius: 16px; padding: 1.5rem;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.15); animation: fadeInUp 0.6s 0.6s ease both;
+  }
+  .search-tabs { display: flex; gap: 4px; margin-bottom: 1rem; }
+  .stab {
+    padding: 7px 16px; border-radius: 8px; font-size: 13px; font-weight: 500;
+    cursor: pointer; border: none; background: transparent; color: var(--text-muted); transition: all 0.2s;
+  }
+  .stab.active { background: var(--navy); color: var(--white); }
+  .stab:hover:not(.active) { background: var(--off-white); }
+  .search-fields { display: grid; grid-template-columns: 1fr 1fr 1fr auto; gap: 10px; }
+  .sfield label { display: block; font-size: 11px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+  .sfield input, .sfield select {
+    width: 100%; padding: 10px 12px; border: 1.5px solid #E5E7EB; border-radius: 8px;
+    font-size: 14px; color: var(--text-dark); background: var(--white); outline: none; transition: border-color 0.2s;
+  }
+  .sfield input:focus, .sfield select:focus { border-color: var(--gold); }
+  .search-btn {
+    background: var(--navy); color: var(--white); border: none;
+    padding: 10px 24px; border-radius: 8px; font-size: 14px; font-weight: 600;
+    cursor: pointer; transition: all 0.2s; align-self: flex-end;
+  }
+  .search-btn:hover { background: var(--navy-mid); }
+
+  section { padding: 5rem 2rem; }
+  .section-header { text-align: center; margin-bottom: 3rem; }
+  .section-label { font-size: 13px; font-weight: 600; color: var(--gold); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px; }
+  .section-title { font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 800; color: var(--text-dark); line-height: 1.2; }
+  .section-sub { font-size: 1rem; color: var(--text-muted); margin-top: 0.6rem; max-width: 500px; margin-left: auto; margin-right: auto; }
+  .container { max-width: 1200px; margin: 0 auto; }
+
+  .themes-bg { background: var(--off-white); }
+  .themes-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 1rem; }
+  .theme-card {
+    border-radius: 14px; overflow: hidden; cursor: pointer;
+    position: relative; aspect-ratio: 3/4; transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .theme-card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(0,0,0,0.15); }
+  .theme-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+  .theme-card:hover img { transform: scale(1.08); }
+  .theme-card-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,22,40,0.85) 0%, rgba(10,22,40,0) 55%); }
+  .theme-card-info { position: absolute; bottom: 0; left: 0; right: 0; padding: 1rem; }
+  .theme-card-name { color: var(--white); font-size: 15px; font-weight: 700; }
+  .theme-card-count { color: var(--gold); font-size: 12px; font-weight: 500; margin-top: 2px; }
+
+  .dest-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+  .dest-card { border-radius: 16px; overflow: hidden; position: relative; transition: transform 0.3s; cursor: pointer; }
+  .dest-card:first-child { grid-row: span 2; }
+  .dest-card img { width: 100%; height: 100%; object-fit: cover; min-height: 200px; transition: transform 0.5s; }
+  .dest-card:first-child img { min-height: 420px; }
+  .dest-card:hover { transform: scale(1.02); }
+  .dest-card:hover img { transform: scale(1.06); }
+  .dest-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,22,40,0.8) 0%, transparent 60%); }
+  .dest-info { position: absolute; bottom: 0; padding: 1.2rem; }
+  .dest-name { color: var(--white); font-size: 1.2rem; font-weight: 700; }
+  .dest-price { color: var(--gold); font-size: 13px; font-weight: 600; margin-top: 2px; }
+  .dest-tag { position: absolute; top: 12px; left: 12px; background: var(--gold); color: var(--navy); font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 50px; }
+
+  .packages-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
+  .pkg-card { background: var(--white); border-radius: 16px; overflow: hidden; border: 1px solid #E5E7EB; transition: all 0.3s; cursor: pointer; }
+  .pkg-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.1); border-color: var(--gold); }
+  .pkg-img { height: 200px; overflow: hidden; position: relative; }
+  .pkg-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
+  .pkg-card:hover .pkg-img img { transform: scale(1.06); }
+  .pkg-badge { position: absolute; top: 12px; right: 12px; background: var(--teal); color: var(--white); font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 50px; }
+  .pkg-body { padding: 1.2rem; }
+  .pkg-dest { font-size: 12px; color: var(--gold); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+  .pkg-name { font-size: 16px; font-weight: 700; color: var(--text-dark); margin-bottom: 8px; }
+  .pkg-meta { display: flex; gap: 1rem; margin-bottom: 12px; }
+  .pmeta { font-size: 12px; color: var(--text-muted); display: flex; align-items: center; gap: 4px; }
+  .pkg-footer { display: flex; align-items: center; justify-content: space-between; border-top: 1px solid #F3F4F6; padding-top: 12px; }
+  .pkg-price { font-size: 18px; font-weight: 800; color: var(--navy); }
+  .pkg-price span { font-size: 12px; font-weight: 400; color: var(--text-muted); }
+  .pkg-btn { background: var(--navy); color: var(--white); border: none; padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+  .pkg-btn:hover { background: var(--gold); color: var(--navy); }
+
+  .stats-section { background: var(--navy); }
+  .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; text-align: center; }
+  .stat-num { font-size: 3rem; font-weight: 800; color: var(--gold); line-height: 1; }
+  .stat-label { color: rgba(255,255,255,0.7); font-size: 14px; margin-top: 8px; }
+
+  .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .why-card { padding: 2rem; border-radius: 16px; border: 1px solid #E5E7EB; background: var(--white); transition: all 0.3s; }
+  .why-card:hover { border-color: var(--gold); transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,0.08); }
+  .why-icon { width: 52px; height: 52px; background: rgba(201,168,76,0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; margin-bottom: 1rem; }
+  .why-title { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+  .why-desc { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
+
+  .testi-bg { background: var(--off-white); }
+  .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .testi-card { background: var(--white); border-radius: 16px; padding: 1.5rem; border: 1px solid #E5E7EB; transition: all 0.3s; }
+  .testi-card:hover { box-shadow: 0 12px 32px rgba(0,0,0,0.08); }
+  .stars { color: var(--gold); font-size: 14px; margin-bottom: 10px; }
+  .testi-text { font-size: 14px; color: var(--text-dark); line-height: 1.7; margin-bottom: 1rem; font-style: italic; }
+  .testi-author { display: flex; align-items: center; gap: 10px; }
+  .testi-avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--navy); display: flex; align-items: center; justify-content: center; color: var(--gold); font-weight: 700; font-size: 14px; }
+  .testi-name { font-size: 14px; font-weight: 600; }
+  .testi-loc { font-size: 12px; color: var(--text-muted); }
+
+  .cta-section { background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%); text-align: center; padding: 6rem 2rem; position: relative; overflow: hidden; }
+  .cta-glow { position: absolute; top: -100px; left: 50%; transform: translateX(-50%); width: 600px; height: 400px; background: radial-gradient(ellipse, rgba(201,168,76,0.15) 0%, transparent 70%); pointer-events: none; }
+  .cta-title { font-size: 2.5rem; font-weight: 800; color: var(--white); margin-bottom: 1rem; position: relative; }
+  .cta-sub { font-size: 1rem; color: rgba(255,255,255,0.7); margin-bottom: 2rem; position: relative; }
+  .cta-btns { display: flex; gap: 1rem; justify-content: center; position: relative; }
+  .cta-input { padding: 14px 20px; border-radius: 10px; border: none; font-size: 15px; width: 280px; outline: none; }
+
+  footer { background: #060E1C; color: rgba(255,255,255,0.7); padding: 4rem 2rem 2rem; }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; max-width: 1200px; margin-left: auto; margin-right: auto; }
+  .footer-brand p { font-size: 14px; line-height: 1.7; margin-top: 1rem; color: rgba(255,255,255,0.55); }
+  .footer-col h4 { color: var(--white); font-size: 14px; font-weight: 600; margin-bottom: 1.2rem; }
+  .footer-col ul { list-style: none; }
+  .footer-col li { margin-bottom: 8px; }
+  .footer-col a { color: rgba(255,255,255,0.55); text-decoration: none; font-size: 14px; transition: color 0.2s; }
+  .footer-col a:hover { color: var(--gold); }
+  .footer-bottom { max-width: 1200px; margin: 0 auto; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; font-size: 13px; }
+
+  @keyframes fadeInUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+  .reveal { opacity: 0; transform: translateY(30px); transition: all 0.7s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  .marquee-wrap { background: var(--gold); padding: 12px 0; overflow: hidden; }
+  .marquee-track { display: flex; gap: 3rem; animation: marquee 25s linear infinite; white-space: nowrap; }
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  .marquee-item { font-size: 13px; font-weight: 600; color: var(--navy); display: flex; align-items: center; gap: 8px; }
+
+  /* WhatsApp float button */
+  .whatsapp-float {
+    position: fixed; bottom: 28px; right: 28px; z-index: 9999;
+    width: 58px; height: 58px; background: #25D366; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 20px rgba(37,211,102,0.5);
+    text-decoration: none; transition: transform 0.2s;
+  }
+  .whatsapp-float:hover { transform: scale(1.1); }
+  .whatsapp-float svg { width: 30px; height: 30px; fill: white; }
+
+  @media (max-width: 768px) {
+    .search-fields { grid-template-columns: 1fr 1fr; }
+    .dest-grid { grid-template-columns: 1fr 1fr; }
+    .dest-card:first-child { grid-row: auto; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .why-grid, .testi-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    nav .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- WhatsApp Float Button -->
+<a href="https://wa.me/917900000000?text=Hi!%20I%20am%20interested%20in%20a%20tour%20package." class="whatsapp-float" target="_blank" title="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo">
+    <div class="logo-icon">✈</div>
+    <span class="logo-text">Go <span>Beyond</span></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#packages">Packages</a></li>
+    <li><a href="#destinations">Destinations</a></li>
+    <li><a href="#themes">Themes</a></li>
+    <li><a href="#about">Why Us</a></li>
+    <li><a href="#">Visa</a></li>
+    <li><a href="#">Blog</a></li>
+  </ul>
+  <button class="nav-cta">Book Now</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-badge">✦ Trusted by 50,000+ Travelers</div>
+    <h1 class="hero-title">Life Is Short.<br>Go <span class="accent">Beyond.</span></h1>
+    <p class="hero-subtitle">Curated holiday packages, expert tour managers, and a touch of home wherever you go. Your world adventure starts here.</p>
+    <div class="hero-btns">
+      <a href="#packages" class="btn-primary">Explore Packages</a>
+      <a href="#" class="btn-outline">Talk to an Expert</a>
+    </div>
+  </div>
+</section>
+
+<!-- SEARCH BAR -->
+<div style="padding: 0 2rem; background: #f0ede6;">
+<div class="search-bar container">
+  <div class="search-tabs">
+    <button class="stab active">Holidays</button>
+    <button class="stab">Flights</button>
+    <button class="stab">Hotels</button>
+    <button class="stab">Visa</button>
+  </div>
+  <div class="search-fields">
+    <div class="sfield">
+      <label>Destination</label>
+      <input type="text" placeholder="Where do you want to go?">
+    </div>
+    <div class="sfield">
+      <label>Departure Date</label>
+      <input type="date">
+    </div>
+    <div class="sfield">
+      <label>Travelers</label>
+      <select>
+        <option>2 Adults</option>
+        <option>1 Adult</option>
+        <option>2 Adults, 1 Child</option>
+        <option>Family (4+)</option>
+      </select>
+    </div>
+    <button class="search-btn">Search</button>
+  </div>
+</div>
+</div>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span class="marquee-item">✈ Maldives Packages</span>
+    <span class="marquee-item">🗼 Europe Tours</span>
+    <span class="marquee-item">🌸 Japan 2026</span>
+    <span class="marquee-item">🏝 Bali Getaway</span>
+    <span class="marquee-item">🇦🇺 Australia Deals</span>
+    <span class="marquee-item">🇦🇪 Dubai Escapes</span>
+    <span class="marquee-item">🌍 Africa Safari</span>
+    <span class="marquee-item">🗽 USA Packages</span>
+    <span class="marquee-item">✈ Maldives Packages</span>
+    <span class="marquee-item">🗼 Europe Tours</span>
+    <span class="marquee-item">🌸 Japan 2026</span>
+    <span class="marquee-item">🏝 Bali Getaway</span>
+    <span class="marquee-item">🇦🇺 Australia Deals</span>
+    <span class="marquee-item">🇦🇪 Dubai Escapes</span>
+    <span class="marquee-item">🌍 Africa Safari</span>
+    <span class="marquee-item">🗽 USA Packages</span>
+  </div>
+</div>
+
+<!-- THEMES -->
+<section class="themes-bg" id="themes">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">Browse By Theme</div>
+      <h2 class="section-title">Travel Your Way</h2>
+      <p class="section-sub">Every trip is unique — find the style that matches your soul.</p>
+    </div>
+    <div class="themes-grid">
+      <div class="theme-card reveal">
+        <img src="https://images.unsplash.com/photo-1518602164578-cd0074062767?w=400&q=75" alt="Honeymoon">
+        <div class="theme-card-overlay"></div>
+        <div class="theme-card-info"><div class="theme-card-name">Honeymoon</div><div class="theme-card-count">56+ Tours</div></div>
+      </div>
+      <div class="theme-card reveal">
+        <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=400&q=75" alt="Group Tours">
+        <div class="theme-card-overlay"></div>
+        <div class="theme-card-info"><div class="theme-card-name">Group Tours</div><div class="theme-card-count">108+ Tours</div></div>
+      </div>
+      <div class="theme-card reveal">
+        <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=400&q=75" alt="Self Drive">
+        <div class="theme-card-overlay"></div>
+        <div class="theme-card-info"><div class="theme-card-name">Self Drive</div><div class="theme-card-count">6+ Tours</div></div>
+      </div>
+      <div class="theme-card reveal">
+        <img src="https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=400&q=75" alt="Short Breaks">
+        <div class="theme-card-overlay"></div>
+        <div class="theme-card-info"><div class="theme-card-name">Short Breaks</div><div class="theme-card-count">5+ Tours</div></div>
+      </div>
+      <div class="theme-card reveal">
+        <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=400&q=75" alt="Luxury Exotic">
+        <div class="theme-card-overlay"></div>
+        <div class="theme-card-info"><div class="theme-card-name">Luxury Exotic</div><div class="theme-card-count">15+ Tours</div></div>
+      </div>
+      <div class="theme-card reveal">
+        <img src="https://images.unsplash.com/photo-1501555088652-021faa106b9b?w=400&q=75" alt="Summer 2026">
+        <div class="theme-card-overlay"></div>
+        <div class="theme-card-info"><div class="theme-card-name">Summer 2026</div><div class="theme-card-count">64+ Tours</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DESTINATIONS -->
+<section id="destinations">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">Top Picks</div>
+      <h2 class="section-title">Popular Destinations</h2>
+      <p class="section-sub">Handpicked places our travelers love the most.</p>
+    </div>
+    <div class="dest-grid reveal">
+      <div class="dest-card">
+        <img src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=600&q=80" alt="Paris">
+        <div class="dest-overlay"></div>
+        <div class="dest-tag">Bestseller</div>
+        <div class="dest-info"><div class="dest-name">Paris, France</div><div class="dest-price">From ₹89,999</div></div>
+      </div>
+      <div class="dest-card">
+        <img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=600&q=80" alt="Tokyo">
+        <div class="dest-overlay"></div>
+        <div class="dest-info"><div class="dest-name">Tokyo, Japan</div><div class="dest-price">From ₹1,09,999</div></div>
+      </div>
+      <div class="dest-card">
+        <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=600&q=80" alt="Bali">
+        <div class="dest-overlay"></div>
+        <div class="dest-info"><div class="dest-name">Bali, Indonesia</div><div class="dest-price">From ₹54,999</div></div>
+      </div>
+      <div class="dest-card">
+        <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=600&q=80" alt="Dubai">
+        <div class="dest-overlay"></div>
+        <div class="dest-info"><div class="dest-name">Dubai, UAE</div><div class="dest-price">From ₹64,999</div></div>
+      </div>
+      <div class="dest-card">
+        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80" alt="Switzerland">
+        <div class="dest-overlay"></div>
+        <div class="dest-info"><div class="dest-name">Switzerland</div><div class="dest-price">From ₹1,29,999</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PACKAGES -->
+<section style="background: var(--off-white);" id="packages">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">Featured</div>
+      <h2 class="section-title">Top Holiday Packages</h2>
+      <p class="section-sub">Thoughtfully crafted, competitively priced, and loved by thousands.</p>
+    </div>
+    <div class="packages-grid" id="packages-grid">
+      <div class="pkg-card reveal">
+        <div class="pkg-img">
+          <img src="https://images.unsplash.com/photo-1493707553966-283afac8c073?w=500&q=75" alt="Maldives">
+          <div class="pkg-badge">Trending</div>
+        </div>
+        <div class="pkg-body">
+          <div class="pkg-dest">Maldives</div>
+          <div class="pkg-name">Maldives Luxury Overwater Villa</div>
+          <div class="pkg-meta">
+            <span class="pmeta">📅 6 Nights / 7 Days</span>
+            <span class="pmeta">👥 Group & Private</span>
+          </div>
+          <div class="pkg-footer">
+            <div class="pkg-price">₹79,999 <span>/ person</span></div>
+            <button class="pkg-btn">View Details</button>
+          </div>
+        </div>
+      </div>
+      <div class="pkg-card reveal">
+        <div class="pkg-img">
+          <img src="https://images.unsplash.com/photo-1505761671935-60b3a7427bad?w=500&q=75" alt="Europe">
+          <div class="pkg-badge">Popular</div>
+        </div>
+        <div class="pkg-body">
+          <div class="pkg-dest">Europe</div>
+          <div class="pkg-name">Best of Europe — 6 Countries</div>
+          <div class="pkg-meta">
+            <span class="pmeta">📅 12 Nights / 13 Days</span>
+            <span class="pmeta">👥 Group Tour</span>
+          </div>
+          <div class="pkg-footer">
+            <div class="pkg-price">₹1,49,999 <span>/ person</span></div>
+            <button class="pkg-btn">View Details</button>
+          </div>
+        </div>
+      </div>
+      <div class="pkg-card reveal">
+        <div class="pkg-img">
+          <img src="https://images.unsplash.com/photo-1512100356356-de1b84283e18?w=500&q=75" alt="Thailand">
+          <div class="pkg-badge">Value Deal</div>
+        </div>
+        <div class="pkg-body">
+          <div class="pkg-dest">Thailand</div>
+          <div class="pkg-name">Thailand Island Hopping Special</div>
+          <div class="pkg-meta">
+            <span class="pmeta">📅 5 Nights / 6 Days</span>
+            <span class="pmeta">👥 Couples & Family</span>
+          </div>
+          <div class="pkg-footer">
+            <div class="pkg-price">₹44,999 <span>/ person</span></div>
+            <button class="pkg-btn">View Details</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="text-align: center; margin-top: 2.5rem;">
+      <a href="#" class="btn-primary">View All Packages</a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats-section">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="reveal"><div class="stat-num" data-target="25">0</div><div class="stat-label">Years of Experience</div></div>
+      <div class="reveal"><div class="stat-num" data-target="50000">0</div><div class="stat-label">Happy Travelers</div></div>
+      <div class="reveal"><div class="stat-num" data-target="80">0</div><div class="stat-label">Destinations</div></div>
+      <div class="reveal"><div class="stat-num" data-target="500">0</div><div class="stat-label">Tour Packages</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section id="about">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">Why Go Beyond</div>
+      <h2 class="section-title">Travel With Confidence</h2>
+      <p class="section-sub">Everything we do is designed to make your journey unforgettable.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card reveal">
+        <div class="why-icon">🏆</div>
+        <div class="why-title">25+ Years of Excellence</div>
+        <div class="why-desc">Decades of experience means we've seen it all — and we know exactly how to handle every travel scenario.</div>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon">👨‍🍳</div>
+        <div class="why-title">Indian Food, Everywhere</div>
+        <div class="why-desc">Our signature Maharaj tours come with an Indian chef so you never compromise on the taste of home.</div>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon">🧭</div>
+        <div class="why-title">Expert Tour Managers</div>
+        <div class="why-desc">Experienced, empathetic guides accompany every group tour, handling logistics so you can focus on the joy.</div>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon">💳</div>
+        <div class="why-title">Easy Visa Assistance</div>
+        <div class="why-desc">We simplify the visa process with end-to-end support, documentation guidance, and fast turnaround times.</div>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon">🌐</div>
+        <div class="why-title">Global Reach</div>
+        <div class="why-desc">80+ destinations across 6 continents, with trusted local partners who share our passion for great travel.</div>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon">📞</div>
+        <div class="why-title">24/7 Support</div>
+        <div class="why-desc">Our team is always a call away — before, during, and after your trip. You're never on your own.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testi-bg">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">Traveler Stories</div>
+      <h2 class="section-title">What Our Guests Say</h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="testi-text">"Go Beyond made our Europe honeymoon absolutely magical. Every detail was perfectly handled and the Indian food was a beautiful bonus."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">PR</div>
+          <div><div class="testi-name">Priya & Rahul Shah</div><div class="testi-loc">Ahmedabad</div></div>
+        </div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="testi-text">"We did a group tour to Japan with 18 people. Our tour manager was exceptional — calm, knowledgeable, and incredibly helpful throughout."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">AM</div>
+          <div><div class="testi-name">Amit Mehta</div><div class="testi-loc">Surat</div></div>
+        </div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="testi-text">"Best Maldives trip ever! The overwater villa package was worth every rupee. Already planning our next trip with Go Beyond."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">KP</div>
+          <div><div class="testi-name">Kavita Patel</div><div class="testi-loc">Baroda</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-glow"></div>
+  <div class="container">
+    <h2 class="cta-title">Ready to Go Beyond?</h2>
+    <p class="cta-sub">Drop your number and our travel expert will call you back within 30 minutes.</p>
+    <div class="cta-btns">
+      <input class="cta-input" type="tel" placeholder="Your phone number">
+      <button class="btn-primary" style="padding: 14px 28px;">Get a Free Callback</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand footer-col">
+      <a href="#" class="logo" style="display: inline-flex;">
+        <div class="logo-icon" style="width:32px;height:32px;font-size:15px;">✈</div>
+        <span class="logo-text" style="font-size:17px; margin-left:8px;">Go <span>Beyond</span></span>
+      </a>
+      <p>Your trusted travel partner for international holidays. Crafting unforgettable journeys since 2000.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Destinations</h4>
+      <ul>
+        <li><a href="#">Europe</a></li>
+        <li><a href="#">Japan</a></li>
+        <li><a href="#">Maldives</a></li>
+        <li><a href="#">Dubai</a></li>
+        <li><a href="#">Thailand</a></li>
+        <li><a href="#">Australia</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Our Tours</h4>
+      <ul>
+        <li><a href="#">Group Tours</a></li>
+        <li><a href="#">Honeymoon</a></li>
+        <li><a href="#">Luxury Exotic</a></li>
+        <li><a href="#">Self Drive</a></li>
+        <li><a href="#">Short Breaks</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="#">📍 Ahmedabad, Gujarat</a></li>
+        <li><a href="#">📞 +91 79 XXXX XXXX</a></li>
+        <li><a href="#">✉ hello@gobeyond.in</a></li>
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">Facebook</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Go Beyond Travels. All rights reserved.</span>
+    <span>Privacy Policy · Terms · Sitemap</span>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.stab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.stab').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+  });
+});
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const el = entry.target;
+      const target = parseInt(el.dataset.target);
+      let start = 0;
+      const step = target / 60;
+      const timer = setInterval(() => {
+        start += step;
+        if (start >= target) {
+          el.textContent = target >= 1000 ? (target/1000)+'K+' : target+'+';
+          clearInterval(timer);
+        } else {
+          el.textContent = target >= 1000 ? Math.floor(start/1000)+'K+' : Math.floor(start)+'+';
+        }
+      }, 20);
+      counterObserver.unobserve(el);
+    }
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('.stat-num[data-target]').forEach(el => counterObserver.observe(el));
+</script>
+</body>
+</html>
