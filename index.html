@@ -676,6 +676,36 @@ const counterObserver = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.5 });
 document.querySelectorAll('.stat-num[data-target]').forEach(el => counterObserver.observe(el));
+async function loadPackages() {
+  try {
+    const res = await fetch('/content/packages/index.json');
+    if (!res.ok) return;
+    const packages = await res.json();
+    if (!packages.length) return;
+    const grid = document.getElementById('packages-grid');
+    grid.innerHTML = packages.map(pkg => `
+      <div class="pkg-card reveal visible">
+        <div class="pkg-img">
+          <img src="${pkg.image || 'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=500&q=75'}" alt="${pkg.title}">
+          <div class="pkg-badge">${pkg.badge || 'New'}</div>
+        </div>
+        <div class="pkg-body">
+          <div class="pkg-dest">${pkg.destination}</div>
+          <div class="pkg-name">${pkg.title}</div>
+          <div class="pkg-meta">
+            <span class="pmeta">📅 Package</span>
+            <span class="pmeta">👥 Group & Private</span>
+          </div>
+          <div class="pkg-footer">
+            <div class="pkg-price">₹${pkg.price} <span>/ person</span></div>
+            <button class="pkg-btn">View Details</button>
+          </div>
+        </div>
+      </div>
+    `).join('');
+  } catch(e) {}
+}
+loadPackages();
 </script>
 </body>
 </html>
