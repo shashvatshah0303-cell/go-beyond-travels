@@ -1,4 +1,3 @@
-# Decap CMS config
 backend:
   name: git-gateway
   branch: main
