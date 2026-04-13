@@ -628,7 +628,7 @@
       <ul>
         <li><a href="#">📍 Ahmedabad, Gujarat</a></li>
         <li><a href="#">📞 +91 79 XXXX XXXX</a></li>
-        <li><a href="#">✉ hello@gobeyond.in</a></li>
+        <li><a href="#">✉ <span class="__cf_email__" data-cfemail="264e434a4a4966414944435f494842084f48">[email&#160;protected]</span></a></li>
         <li><a href="#">Instagram</a></li>
         <li><a href="#">Facebook</a></li>
       </ul>
@@ -640,7 +640,7 @@
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 document.querySelectorAll('.stab').forEach(tab => {
   tab.addEventListener('click', () => {
     document.querySelectorAll('.stab').forEach(t => t.classList.remove('active'));
@@ -678,7 +678,7 @@ const counterObserver = new IntersectionObserver((entries) => {
 document.querySelectorAll('.stat-num[data-target]').forEach(el => counterObserver.observe(el));
 async function loadPackages() {
   try {
-    const res = await fetch('/content/packages/index.json');
+    const res = await fetch('/go-beyond-travels/content/packages/index.json');
     if (!res.ok) return;
     const packages = await res.json();
     if (!packages.length) return;
@@ -703,10 +703,7 @@ async function loadPackages() {
         </div>
       </div>
     `).join('');
-  } catch(e) {}
+  } catch(e) { console.log(e); }
 }
 loadPackages();
-</script>
-</body>
-</html>
-<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+</script></body></html>
