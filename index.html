@@ -6,234 +6,247 @@
 <title>Go Beyond Travels — International Holiday Packages</title>
 <meta name="description" content="Go Beyond Travels — Curated international holiday packages from Ahmedabad. Europe, Dubai, Bali, Japan, Maldives & more.">
 <style>
-* { margin:0; padding:0; box-sizing:border-box; }
-:root {
-  --gold:#C9A84C; --gold-light:#E8C97A; --navy:#0A1628; --navy-mid:#162240;
-  --teal:#1D9E75; --white:#fff; --off-white:#F8F6F0; --text-dark:#1A1A2E; --text-muted:#6B7280;
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --gold:#C9A84C;--gold-light:#E8C97A;--navy:#0A1628;--navy-mid:#162240;
+  --teal:#1D9E75;--white:#fff;--off-white:#F8F6F0;--text-dark:#1A1A2E;--text-muted:#6B7280;
 }
-html { scroll-behavior:smooth; }
-body { font-family:'Segoe UI',system-ui,sans-serif; background:var(--white); color:var(--text-dark); overflow-x:hidden; }
+html{scroll-behavior:smooth;}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--white);color:var(--text-dark);overflow-x:hidden;}
+
+/* SCROLL ANIMATIONS - safe, no crashes */
+.fade-up{opacity:0;transform:translateY(40px);transition:opacity 0.7s ease,transform 0.7s ease;}
+.fade-up.in{opacity:1;transform:translateY(0);}
+.fade-left{opacity:0;transform:translateX(-40px);transition:opacity 0.7s ease,transform 0.7s ease;}
+.fade-left.in{opacity:1;transform:translateX(0);}
+.fade-right{opacity:0;transform:translateX(40px);transition:opacity 0.7s ease,transform 0.7s ease;}
+.fade-right.in{opacity:1;transform:translateX(0);}
+.scale-in{opacity:0;transform:scale(0.92);transition:opacity 0.6s ease,transform 0.6s ease;}
+.scale-in.in{opacity:1;transform:scale(1);}
+.delay-1{transition-delay:0.1s!important;}
+.delay-2{transition-delay:0.2s!important;}
+.delay-3{transition-delay:0.3s!important;}
+.delay-4{transition-delay:0.4s!important;}
+.delay-5{transition-delay:0.5s!important;}
 
 /* NAV */
-nav { position:fixed; top:0; left:0; right:0; z-index:2000; display:flex; align-items:center; justify-content:space-between; padding:0 2rem; height:68px; background:rgba(10,22,40,0.97); backdrop-filter:blur(12px); border-bottom:1px solid rgba(201,168,76,0.2); }
-.logo { display:flex; align-items:center; gap:10px; text-decoration:none; }
-.logo-icon { width:38px; height:38px; background:linear-gradient(135deg,var(--gold),var(--gold-light)); border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:18px; }
-.logo-text { color:var(--white); font-size:20px; font-weight:700; }
-.logo-text span { color:var(--gold); }
-.nav-links { display:flex; gap:0; list-style:none; }
-.nav-links > li { position:relative; }
-.nav-links > li > a { color:rgba(255,255,255,0.85); text-decoration:none; font-size:14px; font-weight:500; padding:24px 16px; display:block; transition:color 0.2s; }
-.nav-links > li > a:hover { color:var(--gold); }
-.nav-links > li:hover .mega-menu { display:flex; }
-.mega-menu { display:none; position:absolute; top:68px; left:50%; transform:translateX(-50%); background:var(--white); border-radius:16px; box-shadow:0 20px 60px rgba(0,0,0,0.2); padding:2rem; gap:2rem; min-width:700px; z-index:3000; border:1px solid #E5E7EB; }
-.mega-col h4 { font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:var(--gold); margin-bottom:12px; }
-.mega-col a { display:block; font-size:13px; color:var(--text-dark); text-decoration:none; padding:4px 0; transition:color 0.2s; }
-.mega-col a:hover { color:var(--gold); }
-.nav-right { display:flex; align-items:center; gap:12px; }
-.nav-phone { color:var(--gold); font-size:13px; font-weight:600; }
-.nav-cta { background:var(--gold); color:var(--navy); padding:9px 20px; border-radius:8px; font-size:14px; font-weight:700; border:none; cursor:pointer; transition:all 0.2s; }
-.nav-cta:hover { background:var(--gold-light); transform:translateY(-1px); }
+nav{position:fixed;top:0;left:0;right:0;z-index:2000;display:flex;align-items:center;justify-content:space-between;padding:0 2rem;height:68px;background:rgba(10,22,40,0.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(201,168,76,0.2);}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.logo-icon{width:38px;height:38px;background:linear-gradient(135deg,var(--gold),var(--gold-light));border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;}
+.logo-text{color:var(--white);font-size:20px;font-weight:700;}
+.logo-text span{color:var(--gold);}
+.nav-links{display:flex;gap:0;list-style:none;}
+.nav-links>li{position:relative;}
+.nav-links>li>a{color:rgba(255,255,255,0.85);text-decoration:none;font-size:14px;font-weight:500;padding:24px 16px;display:block;transition:color 0.2s;}
+.nav-links>li>a:hover{color:var(--gold);}
+.nav-links>li:hover .mega-menu{display:flex;}
+.mega-menu{display:none;position:absolute;top:68px;left:50%;transform:translateX(-50%);background:var(--white);border-radius:16px;box-shadow:0 20px 60px rgba(0,0,0,0.2);padding:2rem;gap:2rem;min-width:720px;z-index:3000;border:1px solid #E5E7EB;}
+.mega-col h4{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--gold);margin-bottom:12px;}
+.mega-col a{display:block;font-size:13px;color:var(--text-dark);text-decoration:none;padding:4px 0;transition:color 0.2s;}
+.mega-col a:hover{color:var(--gold);}
+.nav-right{display:flex;align-items:center;gap:12px;}
+.nav-phone{color:var(--gold);font-size:13px;font-weight:600;}
+.nav-cta{background:var(--gold);color:var(--navy);padding:9px 20px;border-radius:8px;font-size:14px;font-weight:700;border:none;cursor:pointer;transition:all 0.2s;}
+.nav-cta:hover{background:var(--gold-light);transform:translateY(-1px);}
 
 /* HERO */
-.hero { min-height:100vh; position:relative; display:flex; align-items:center; justify-content:center; background:var(--navy); overflow:hidden; }
-.hero-bg { position:absolute; inset:0; background:url('https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1600&q=80') center/cover no-repeat; opacity:0.35; animation:heroZoom 20s ease-in-out infinite alternate; }
-@keyframes heroZoom { from{transform:scale(1)} to{transform:scale(1.08)} }
-.hero-overlay { position:absolute; inset:0; background:linear-gradient(to bottom,rgba(10,22,40,0.6) 0%,rgba(10,22,40,0.3) 50%,rgba(10,22,40,0.9) 100%); }
-.hero-content { position:relative; z-index:2; text-align:center; padding:0 1.5rem; max-width:900px; }
-.hero-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(201,168,76,0.15); border:1px solid rgba(201,168,76,0.4); color:var(--gold); padding:7px 16px; border-radius:50px; font-size:13px; font-weight:500; margin-bottom:1.5rem; animation:fadeInUp 0.6s ease both; }
-.hero-title { font-size:clamp(2.8rem,6vw,5rem); font-weight:800; color:var(--white); line-height:1.1; letter-spacing:-1px; margin-bottom:1.2rem; animation:fadeInUp 0.6s 0.15s ease both; }
-.hero-title .accent { color:var(--gold); }
-.hero-subtitle { font-size:1.15rem; color:rgba(255,255,255,0.75); max-width:580px; margin:0 auto 2.5rem; line-height:1.7; animation:fadeInUp 0.6s 0.3s ease both; }
-.hero-btns { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; animation:fadeInUp 0.6s 0.45s ease both; }
-.btn-primary { background:var(--gold); color:var(--navy); padding:14px 32px; border-radius:10px; font-size:15px; font-weight:700; text-decoration:none; transition:all 0.25s; border:none; cursor:pointer; display:inline-block; }
-.btn-primary:hover { background:var(--gold-light); transform:translateY(-2px); box-shadow:0 8px 24px rgba(201,168,76,0.35); }
-.btn-outline { background:transparent; color:var(--white); padding:14px 32px; border:1.5px solid rgba(255,255,255,0.4); border-radius:10px; font-size:15px; font-weight:600; text-decoration:none; transition:all 0.25s; cursor:pointer; }
-.btn-outline:hover { border-color:var(--white); background:rgba(255,255,255,0.1); }
+.hero{min-height:100vh;position:relative;display:flex;align-items:center;justify-content:center;background:var(--navy);overflow:hidden;}
+.hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1600&q=80') center/cover no-repeat;opacity:0.35;animation:heroZoom 20s ease-in-out infinite alternate;}
+@keyframes heroZoom{from{transform:scale(1)}to{transform:scale(1.08)}}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,22,40,0.6) 0%,rgba(10,22,40,0.3) 50%,rgba(10,22,40,0.9) 100%);}
+.hero-content{position:relative;z-index:2;text-align:center;padding:0 1.5rem;max-width:900px;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.4);color:var(--gold);padding:7px 16px;border-radius:50px;font-size:13px;font-weight:500;margin-bottom:1.5rem;animation:fadeInUp 0.6s ease both;}
+.hero-title{font-size:clamp(2.8rem,6vw,5rem);font-weight:800;color:var(--white);line-height:1.1;letter-spacing:-1px;margin-bottom:1.2rem;animation:fadeInUp 0.6s 0.15s ease both;}
+.hero-title .accent{color:var(--gold);}
+.hero-subtitle{font-size:1.15rem;color:rgba(255,255,255,0.75);max-width:580px;margin:0 auto 2.5rem;line-height:1.7;animation:fadeInUp 0.6s 0.3s ease both;}
+.hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;animation:fadeInUp 0.6s 0.45s ease both;}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+
+/* BUTTONS */
+.btn-primary{background:var(--gold);color:var(--navy);padding:14px 32px;border-radius:10px;font-size:15px;font-weight:700;text-decoration:none;transition:all 0.25s;border:none;cursor:pointer;display:inline-block;}
+.btn-primary:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 8px 24px rgba(201,168,76,0.35);}
+.btn-outline{background:transparent;color:var(--white);padding:14px 32px;border:1.5px solid rgba(255,255,255,0.4);border-radius:10px;font-size:15px;font-weight:600;text-decoration:none;transition:all 0.25s;cursor:pointer;}
+.btn-outline:hover{border-color:var(--white);background:rgba(255,255,255,0.1);}
 
 /* SEARCH */
-.search-wrap { padding:0 2rem; background:#f0ede6; }
-.search-bar { position:relative; z-index:2; max-width:860px; margin:-30px auto 0; background:var(--white); border-radius:16px; padding:1.5rem; box-shadow:0 20px 60px rgba(0,0,0,0.15); animation:fadeInUp 0.6s 0.6s ease both; }
-.search-tabs { display:flex; gap:4px; margin-bottom:1rem; }
-.stab { padding:7px 16px; border-radius:8px; font-size:13px; font-weight:500; cursor:pointer; border:none; background:transparent; color:var(--text-muted); transition:all 0.2s; }
-.stab.active { background:var(--navy); color:var(--white); }
-.stab:hover:not(.active) { background:var(--off-white); }
-.search-fields { display:grid; grid-template-columns:1fr 1fr 1fr 1fr auto; gap:10px; }
-.sfield label { display:block; font-size:11px; font-weight:600; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.5px; margin-bottom:4px; }
-.sfield input,.sfield select { width:100%; padding:10px 12px; border:1.5px solid #E5E7EB; border-radius:8px; font-size:14px; color:var(--text-dark); background:var(--white); outline:none; transition:border-color 0.2s; }
-.sfield input:focus,.sfield select:focus { border-color:var(--gold); }
-.search-btn { background:var(--navy); color:var(--white); border:none; padding:10px 24px; border-radius:8px; font-size:14px; font-weight:600; cursor:pointer; transition:all 0.2s; align-self:flex-end; }
-.search-btn:hover { background:var(--gold); }
+.search-wrap{padding:0 2rem;background:#f0ede6;}
+.search-bar{position:relative;z-index:2;max-width:860px;margin:-30px auto 0;background:var(--white);border-radius:16px;padding:1.5rem;box-shadow:0 20px 60px rgba(0,0,0,0.15);animation:fadeInUp 0.6s 0.6s ease both;}
+.search-tabs{display:flex;gap:4px;margin-bottom:1rem;}
+.stab{padding:7px 16px;border-radius:8px;font-size:13px;font-weight:500;cursor:pointer;border:none;background:transparent;color:var(--text-muted);transition:all 0.2s;}
+.stab.active{background:var(--navy);color:var(--white);}
+.stab:hover:not(.active){background:var(--off-white);}
+.search-fields{display:grid;grid-template-columns:1fr 1fr 1fr 1fr auto;gap:10px;}
+.sfield label{display:block;font-size:11px;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:4px;}
+.sfield input,.sfield select{width:100%;padding:10px 12px;border:1.5px solid #E5E7EB;border-radius:8px;font-size:14px;color:var(--text-dark);background:var(--white);outline:none;transition:border-color 0.2s;}
+.sfield input:focus,.sfield select:focus{border-color:var(--gold);}
+.search-btn{background:var(--navy);color:var(--white);border:none;padding:10px 24px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;transition:all 0.2s;align-self:flex-end;}
+.search-btn:hover{background:var(--gold);color:var(--navy);}
 
 /* MARQUEE */
-.marquee-wrap { background:var(--gold); padding:12px 0; overflow:hidden; }
-.marquee-track { display:flex; gap:3rem; animation:marquee 30s linear infinite; white-space:nowrap; }
-@keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
-.marquee-item { font-size:13px; font-weight:600; color:var(--navy); }
+.marquee-wrap{background:var(--gold);padding:12px 0;overflow:hidden;}
+.marquee-track{display:flex;gap:3rem;animation:marquee 35s linear infinite;white-space:nowrap;}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.marquee-item{font-size:13px;font-weight:600;color:var(--navy);}
 
 /* SECTIONS */
-section { padding:5rem 2rem; }
-.section-header { text-align:center; margin-bottom:3rem; }
-.section-label { font-size:13px; font-weight:600; color:var(--gold); text-transform:uppercase; letter-spacing:1.5px; margin-bottom:8px; }
-.section-title { font-size:clamp(1.8rem,3vw,2.5rem); font-weight:800; color:var(--text-dark); line-height:1.2; }
-.section-sub { font-size:1rem; color:var(--text-muted); margin-top:0.6rem; max-width:500px; margin-left:auto; margin-right:auto; }
-.container { max-width:1200px; margin:0 auto; }
+section{padding:5rem 2rem;}
+.section-header{text-align:center;margin-bottom:3rem;}
+.section-label{font-size:13px;font-weight:600;color:var(--gold);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;}
+.section-title{font-size:clamp(1.8rem,3vw,2.5rem);font-weight:800;color:var(--text-dark);line-height:1.2;}
+.section-sub{font-size:1rem;color:var(--text-muted);margin-top:0.6rem;max-width:500px;margin-left:auto;margin-right:auto;}
+.container{max-width:1200px;margin:0 auto;}
 
 /* DESTINATION DASHBOARD */
-.dest-dashboard { background:var(--off-white); }
-.dest-tabs { display:flex; gap:8px; flex-wrap:wrap; justify-content:center; margin-bottom:2rem; }
-.dest-tab { padding:8px 20px; border-radius:50px; font-size:13px; font-weight:600; cursor:pointer; border:1.5px solid #E5E7EB; background:var(--white); color:var(--text-muted); transition:all 0.2s; }
-.dest-tab.active,.dest-tab:hover { background:var(--navy); color:var(--white); border-color:var(--navy); }
-.dest-panel { display:none; }
-.dest-panel.active { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:1.2rem; animation:fadeInUp 0.4s ease; }
-.dest-card { border-radius:14px; overflow:hidden; position:relative; cursor:pointer; aspect-ratio:4/3; transition:transform 0.3s,box-shadow 0.3s; }
-.dest-card:hover { transform:translateY(-6px); box-shadow:0 20px 40px rgba(0,0,0,0.18); }
-.dest-card img { width:100%; height:100%; object-fit:cover; transition:transform 0.5s; }
-.dest-card:hover img { transform:scale(1.08); }
-.dest-overlay { position:absolute; inset:0; background:linear-gradient(to top,rgba(10,22,40,0.88) 0%,rgba(10,22,40,0) 55%); }
-.dest-info { position:absolute; bottom:0; left:0; right:0; padding:1rem; }
-.dest-name { color:var(--white); font-size:15px; font-weight:700; }
-.dest-sub { color:var(--gold); font-size:12px; margin-top:2px; }
-.dest-tag-badge { position:absolute; top:10px; left:10px; background:var(--gold); color:var(--navy); font-size:10px; font-weight:700; padding:3px 9px; border-radius:50px; }
+.dest-dashboard{background:var(--off-white);}
+.dest-tabs{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:2rem;}
+.dest-tab{padding:8px 20px;border-radius:50px;font-size:13px;font-weight:600;cursor:pointer;border:1.5px solid #E5E7EB;background:var(--white);color:var(--text-muted);transition:all 0.2s;}
+.dest-tab.active,.dest-tab:hover{background:var(--navy);color:var(--white);border-color:var(--navy);}
+.dest-panel{display:none;}
+.dest-panel.active{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1.2rem;animation:fadeInUp 0.4s ease;}
+.dest-card{border-radius:14px;overflow:hidden;position:relative;cursor:pointer;aspect-ratio:4/3;transition:transform 0.3s,box-shadow 0.3s;}
+.dest-card:hover{transform:translateY(-6px);box-shadow:0 20px 40px rgba(0,0,0,0.18);}
+.dest-card img{width:100%;height:100%;object-fit:cover;transition:transform 0.5s;}
+.dest-card:hover img{transform:scale(1.08);}
+.dest-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,22,40,0.88) 0%,rgba(10,22,40,0) 55%);}
+.dest-info{position:absolute;bottom:0;left:0;right:0;padding:1rem;}
+.dest-name{color:var(--white);font-size:15px;font-weight:700;}
+.dest-sub{color:var(--gold);font-size:12px;margin-top:2px;}
+.dest-tag-badge{position:absolute;top:10px;left:10px;background:var(--gold);color:var(--navy);font-size:10px;font-weight:700;padding:3px 9px;border-radius:50px;}
 
 /* PACKAGES */
-.packages-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:1.5rem; }
-.pkg-card { background:var(--white); border-radius:16px; overflow:hidden; border:1px solid #E5E7EB; transition:all 0.3s; cursor:pointer; }
-.pkg-card:hover { transform:translateY(-4px); box-shadow:0 16px 40px rgba(0,0,0,0.12); border-color:var(--gold); }
-.pkg-img { height:210px; overflow:hidden; position:relative; }
-.pkg-img img { width:100%; height:100%; object-fit:cover; transition:transform 0.4s; }
-.pkg-card:hover .pkg-img img { transform:scale(1.06); }
-.pkg-badge { position:absolute; top:12px; right:12px; background:var(--teal); color:var(--white); font-size:11px; font-weight:700; padding:4px 10px; border-radius:50px; }
-.pkg-body { padding:1.2rem; }
-.pkg-dest { font-size:12px; color:var(--gold); font-weight:600; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:4px; }
-.pkg-name { font-size:16px; font-weight:700; color:var(--text-dark); margin-bottom:8px; line-height:1.3; }
-.pkg-meta { display:flex; gap:1rem; margin-bottom:12px; flex-wrap:wrap; }
-.pmeta { font-size:12px; color:var(--text-muted); }
-.pkg-footer { display:flex; align-items:center; justify-content:space-between; border-top:1px solid #F3F4F6; padding-top:12px; }
-.pkg-price { font-size:18px; font-weight:800; color:var(--navy); }
-.pkg-price span { font-size:12px; font-weight:400; color:var(--text-muted); }
-.pkg-btn { background:var(--navy); color:var(--white); border:none; padding:8px 16px; border-radius:8px; font-size:13px; font-weight:600; cursor:pointer; transition:all 0.2s; }
-.pkg-btn:hover { background:var(--gold); color:var(--navy); }
-.pkg-filter-tabs { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:2rem; }
-.pkg-tab { padding:7px 18px; border-radius:50px; font-size:13px; font-weight:500; cursor:pointer; border:1.5px solid #E5E7EB; background:var(--white); color:var(--text-muted); transition:all 0.2s; }
-.pkg-tab.active,.pkg-tab:hover { background:var(--navy); color:var(--white); border-color:var(--navy); }
+.packages-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.5rem;}
+.pkg-card{background:var(--white);border-radius:16px;overflow:hidden;border:1px solid #E5E7EB;transition:all 0.3s;cursor:pointer;}
+.pkg-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,0.12);border-color:var(--gold);}
+.pkg-img{height:210px;overflow:hidden;position:relative;}
+.pkg-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s;}
+.pkg-card:hover .pkg-img img{transform:scale(1.06);}
+.pkg-badge{position:absolute;top:12px;right:12px;background:var(--teal);color:var(--white);font-size:11px;font-weight:700;padding:4px 10px;border-radius:50px;}
+.pkg-body{padding:1.2rem;}
+.pkg-dest{font-size:12px;color:var(--gold);font-weight:600;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:4px;}
+.pkg-name{font-size:16px;font-weight:700;color:var(--text-dark);margin-bottom:8px;line-height:1.3;}
+.pkg-meta{display:flex;gap:1rem;margin-bottom:12px;flex-wrap:wrap;}
+.pmeta{font-size:12px;color:var(--text-muted);}
+.pkg-footer{display:flex;align-items:center;justify-content:space-between;border-top:1px solid #F3F4F6;padding-top:12px;}
+.pkg-price{font-size:18px;font-weight:800;color:var(--navy);}
+.pkg-price span{font-size:12px;font-weight:400;color:var(--text-muted);}
+.pkg-btn{background:var(--navy);color:var(--white);border:none;padding:8px 16px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;transition:all 0.2s;}
+.pkg-btn:hover{background:var(--gold);color:var(--navy);}
+.pkg-filter-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:2rem;}
+.pkg-tab{padding:7px 18px;border-radius:50px;font-size:13px;font-weight:500;cursor:pointer;border:1.5px solid #E5E7EB;background:var(--white);color:var(--text-muted);transition:all 0.2s;}
+.pkg-tab.active,.pkg-tab:hover{background:var(--navy);color:var(--white);border-color:var(--navy);}
 
 /* THEMES */
-.themes-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(170px,1fr)); gap:1rem; }
-.theme-card { border-radius:14px; overflow:hidden; cursor:pointer; position:relative; aspect-ratio:3/4; transition:transform 0.3s,box-shadow 0.3s; }
-.theme-card:hover { transform:translateY(-6px); box-shadow:0 20px 40px rgba(0,0,0,0.15); }
-.theme-card img { width:100%; height:100%; object-fit:cover; transition:transform 0.5s; }
-.theme-card:hover img { transform:scale(1.08); }
-.theme-card-overlay { position:absolute; inset:0; background:linear-gradient(to top,rgba(10,22,40,0.88) 0%,rgba(10,22,40,0) 55%); }
-.theme-card-info { position:absolute; bottom:0; left:0; right:0; padding:1rem; }
-.theme-card-name { color:var(--white); font-size:14px; font-weight:700; }
-.theme-card-count { color:var(--gold); font-size:12px; margin-top:2px; }
+.themes-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:1rem;}
+.theme-card{border-radius:14px;overflow:hidden;cursor:pointer;position:relative;aspect-ratio:3/4;transition:transform 0.3s,box-shadow 0.3s;}
+.theme-card:hover{transform:translateY(-6px);box-shadow:0 20px 40px rgba(0,0,0,0.15);}
+.theme-card img{width:100%;height:100%;object-fit:cover;transition:transform 0.5s;}
+.theme-card:hover img{transform:scale(1.08);}
+.theme-card-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,22,40,0.88) 0%,rgba(10,22,40,0) 55%);}
+.theme-card-info{position:absolute;bottom:0;left:0;right:0;padding:1rem;}
+.theme-card-name{color:var(--white);font-size:14px;font-weight:700;}
+.theme-card-count{color:var(--gold);font-size:12px;margin-top:2px;}
 
 /* STATS */
-.stats-section { background:var(--navy); }
-.stats-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:2rem; text-align:center; }
-.stat-num { font-size:3rem; font-weight:800; color:var(--gold); line-height:1; }
-.stat-label { color:rgba(255,255,255,0.7); font-size:14px; margin-top:8px; }
+.stats-section{background:var(--navy);}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;text-align:center;}
+.stat-num{font-size:3rem;font-weight:800;color:var(--gold);line-height:1;}
+.stat-label{color:rgba(255,255,255,0.7);font-size:14px;margin-top:8px;}
 
-/* WHY */
-.why-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
-.why-card { padding:2rem; border-radius:16px; border:1px solid #E5E7EB; background:var(--white); transition:all 0.3s; }
-.why-card:hover { border-color:var(--gold); transform:translateY(-3px); box-shadow:0 12px 32px rgba(0,0,0,0.08); }
-.why-icon { width:52px; height:52px; background:rgba(201,168,76,0.1); border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:24px; margin-bottom:1rem; }
-.why-title { font-size:16px; font-weight:700; margin-bottom:6px; }
-.why-desc { font-size:14px; color:var(--text-muted); line-height:1.6; }
+/* WHY US */
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.why-card{padding:2rem;border-radius:16px;border:1px solid #E5E7EB;background:var(--white);transition:all 0.3s;}
+.why-card:hover{border-color:var(--gold);transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,0.08);}
+.why-icon{width:52px;height:52px;background:rgba(201,168,76,0.1);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:1rem;}
+.why-title{font-size:16px;font-weight:700;margin-bottom:6px;}
+.why-desc{font-size:14px;color:var(--text-muted);line-height:1.6;}
 
 /* TESTIMONIALS */
-.testi-bg { background:var(--off-white); }
-.testi-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
-.testi-card { background:var(--white); border-radius:16px; padding:1.5rem; border:1px solid #E5E7EB; transition:all 0.3s; }
-.testi-card:hover { box-shadow:0 12px 32px rgba(0,0,0,0.08); }
-.stars { color:var(--gold); font-size:14px; margin-bottom:10px; }
-.testi-text { font-size:14px; color:var(--text-dark); line-height:1.7; margin-bottom:1rem; font-style:italic; }
-.testi-author { display:flex; align-items:center; gap:10px; }
-.testi-avatar { width:40px; height:40px; border-radius:50%; background:var(--navy); display:flex; align-items:center; justify-content:center; color:var(--gold); font-weight:700; font-size:14px; }
-.testi-name { font-size:14px; font-weight:600; }
-.testi-loc { font-size:12px; color:var(--text-muted); }
+.testi-bg{background:var(--off-white);}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.testi-card{background:var(--white);border-radius:16px;padding:1.5rem;border:1px solid #E5E7EB;transition:all 0.3s;}
+.testi-card:hover{box-shadow:0 12px 32px rgba(0,0,0,0.08);}
+.stars{color:var(--gold);font-size:14px;margin-bottom:10px;}
+.testi-text{font-size:14px;color:var(--text-dark);line-height:1.7;margin-bottom:1rem;font-style:italic;}
+.testi-author{display:flex;align-items:center;gap:10px;}
+.testi-avatar{width:40px;height:40px;border-radius:50%;background:var(--navy);display:flex;align-items:center;justify-content:center;color:var(--gold);font-weight:700;font-size:14px;}
+.testi-name{font-size:14px;font-weight:600;}
+.testi-loc{font-size:12px;color:var(--text-muted);}
 
 /* CTA */
-.cta-section { background:linear-gradient(135deg,var(--navy) 0%,var(--navy-mid) 100%); text-align:center; padding:6rem 2rem; position:relative; overflow:hidden; }
-.cta-glow { position:absolute; top:-100px; left:50%; transform:translateX(-50%); width:600px; height:400px; background:radial-gradient(ellipse,rgba(201,168,76,0.15) 0%,transparent 70%); pointer-events:none; }
-.cta-title { font-size:2.5rem; font-weight:800; color:var(--white); margin-bottom:1rem; position:relative; }
-.cta-sub { font-size:1rem; color:rgba(255,255,255,0.7); margin-bottom:2rem; position:relative; }
-.cta-btns { display:flex; gap:1rem; justify-content:center; position:relative; flex-wrap:wrap; }
-.cta-input { padding:14px 20px; border-radius:10px; border:none; font-size:15px; width:280px; outline:none; }
+.cta-section{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-mid) 100%);text-align:center;padding:6rem 2rem;position:relative;overflow:hidden;}
+.cta-glow{position:absolute;top:-100px;left:50%;transform:translateX(-50%);width:600px;height:400px;background:radial-gradient(ellipse,rgba(201,168,76,0.15) 0%,transparent 70%);pointer-events:none;}
+.cta-title{font-size:2.5rem;font-weight:800;color:var(--white);margin-bottom:1rem;position:relative;}
+.cta-sub{font-size:1rem;color:rgba(255,255,255,0.7);margin-bottom:2rem;position:relative;}
+.cta-btns{display:flex;gap:1rem;justify-content:center;position:relative;flex-wrap:wrap;}
+.cta-input{padding:14px 20px;border-radius:10px;border:none;font-size:15px;width:280px;outline:none;}
 
 /* FOOTER */
-footer { background:#060E1C; color:rgba(255,255,255,0.7); padding:4rem 2rem 2rem; }
-.footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:3rem; margin-bottom:3rem; max-width:1200px; margin-left:auto; margin-right:auto; }
-.footer-brand p { font-size:14px; line-height:1.7; margin-top:1rem; color:rgba(255,255,255,0.55); }
-.footer-col h4 { color:var(--white); font-size:14px; font-weight:600; margin-bottom:1.2rem; }
-.footer-col ul { list-style:none; }
-.footer-col li { margin-bottom:8px; }
-.footer-col a { color:rgba(255,255,255,0.55); text-decoration:none; font-size:14px; transition:color 0.2s; }
-.footer-col a:hover { color:var(--gold); }
-.footer-bottom { max-width:1200px; margin:0 auto; border-top:1px solid rgba(255,255,255,0.08); padding-top:1.5rem; display:flex; justify-content:space-between; align-items:center; font-size:13px; }
+footer{background:#060E1C;color:rgba(255,255,255,0.7);padding:4rem 2rem 2rem;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem;max-width:1200px;margin-left:auto;margin-right:auto;}
+.footer-brand p{font-size:14px;line-height:1.7;margin-top:1rem;color:rgba(255,255,255,0.55);}
+.footer-col h4{color:var(--white);font-size:14px;font-weight:600;margin-bottom:1.2rem;}
+.footer-col ul{list-style:none;}
+.footer-col li{margin-bottom:8px;}
+.footer-col a{color:rgba(255,255,255,0.55);text-decoration:none;font-size:14px;transition:color 0.2s;}
+.footer-col a:hover{color:var(--gold);}
+.footer-bottom{max-width:1200px;margin:0 auto;border-top:1px solid rgba(255,255,255,0.08);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;font-size:13px;}
 
 /* MODAL */
-.modal-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.7); z-index:5000; overflow-y:auto; padding:2rem 1rem; }
-.modal-overlay.open { display:flex; align-items:flex-start; justify-content:center; }
-.modal { background:var(--white); border-radius:20px; max-width:860px; width:100%; margin:auto; overflow:hidden; position:relative; }
-.modal-img { height:340px; overflow:hidden; position:relative; }
-.modal-img img { width:100%; height:100%; object-fit:cover; }
-.modal-img-overlay { position:absolute; inset:0; background:linear-gradient(to top,rgba(10,22,40,0.7) 0%,transparent 60%); }
-.modal-img-title { position:absolute; bottom:0; left:0; right:0; padding:1.5rem 2rem; }
-.modal-img-title h2 { color:var(--white); font-size:1.8rem; font-weight:800; }
-.modal-img-title p { color:var(--gold); font-size:14px; margin-top:4px; }
-.modal-close { position:absolute; top:16px; right:16px; width:36px; height:36px; background:rgba(0,0,0,0.5); border:none; border-radius:50%; color:white; font-size:18px; cursor:pointer; display:flex; align-items:center; justify-content:center; z-index:10; }
-.modal-body { padding:2rem; }
-.modal-meta { display:flex; gap:1.5rem; flex-wrap:wrap; margin-bottom:1.5rem; padding-bottom:1.5rem; border-bottom:1px solid #F3F4F6; }
-.modal-meta-item { text-align:center; }
-.modal-meta-label { font-size:11px; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.5px; }
-.modal-meta-val { font-size:16px; font-weight:700; color:var(--navy); margin-top:2px; }
-.modal-section-title { font-size:16px; font-weight:700; color:var(--text-dark); margin-bottom:10px; margin-top:1.5rem; }
-.modal-desc { font-size:14px; color:var(--text-muted); line-height:1.8; }
-.modal-highlights { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:8px; }
-.highlight-item { display:flex; align-items:center; gap:8px; font-size:13px; color:var(--text-dark); }
-.highlight-item::before { content:'✓'; color:var(--teal); font-weight:700; }
-.modal-itinerary { margin-top:8px; }
-.itin-day { border-left:2px solid var(--gold); padding-left:14px; margin-bottom:14px; }
-.itin-day-title { font-size:13px; font-weight:700; color:var(--navy); }
-.itin-day-desc { font-size:13px; color:var(--text-muted); margin-top:3px; line-height:1.6; }
-.modal-footer { display:flex; align-items:center; justify-content:space-between; margin-top:2rem; padding-top:1.5rem; border-top:1px solid #F3F4F6; flex-wrap:wrap; gap:1rem; }
-.modal-price-box { }
-.modal-price-label { font-size:12px; color:var(--text-muted); }
-.modal-price-val { font-size:28px; font-weight:800; color:var(--navy); }
-.modal-price-val span { font-size:14px; font-weight:400; }
-.modal-actions { display:flex; gap:10px; }
-.wa-btn { background:#25D366; color:var(--white); border:none; padding:12px 24px; border-radius:10px; font-size:14px; font-weight:700; cursor:pointer; display:flex; align-items:center; gap:8px; text-decoration:none; transition:all 0.2s; }
-.wa-btn:hover { background:#1da851; transform:translateY(-1px); }
-.enq-btn { background:var(--navy); color:var(--white); border:none; padding:12px 24px; border-radius:10px; font-size:14px; font-weight:700; cursor:pointer; transition:all 0.2s; }
-.enq-btn:hover { background:var(--gold); color:var(--navy); }
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:5000;overflow-y:auto;padding:2rem 1rem;}
+.modal-overlay.open{display:flex;align-items:flex-start;justify-content:center;}
+.modal{background:var(--white);border-radius:20px;max-width:880px;width:100%;margin:auto;overflow:hidden;position:relative;}
+.modal-img{height:340px;overflow:hidden;position:relative;}
+.modal-img img{width:100%;height:100%;object-fit:cover;}
+.modal-img-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,22,40,0.75) 0%,transparent 55%);}
+.modal-img-title{position:absolute;bottom:0;left:0;right:0;padding:1.5rem 2rem;}
+.modal-img-title h2{color:var(--white);font-size:1.8rem;font-weight:800;}
+.modal-img-title p{color:var(--gold);font-size:14px;margin-top:4px;}
+.modal-close{position:absolute;top:16px;right:16px;width:36px;height:36px;background:rgba(0,0,0,0.5);border:none;border-radius:50%;color:white;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:10;}
+.modal-body{padding:2rem;}
+.modal-meta{display:flex;gap:1.5rem;flex-wrap:wrap;margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid #F3F4F6;}
+.modal-meta-item{text-align:center;}
+.modal-meta-label{font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px;}
+.modal-meta-val{font-size:15px;font-weight:700;color:var(--navy);margin-top:2px;}
+.modal-section-title{font-size:16px;font-weight:700;color:var(--text-dark);margin-bottom:10px;margin-top:1.5rem;}
+.modal-desc{font-size:14px;color:var(--text-muted);line-height:1.8;}
+.modal-highlights{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px;}
+.highlight-item{display:flex;align-items:flex-start;gap:8px;font-size:13px;color:var(--text-dark);}
+.highlight-item::before{content:'✓';color:var(--teal);font-weight:700;flex-shrink:0;}
+.modal-itinerary{margin-top:8px;}
+.itin-day{border-left:3px solid var(--gold);padding-left:14px;margin-bottom:14px;}
+.itin-day-title{font-size:13px;font-weight:700;color:var(--navy);}
+.itin-day-desc{font-size:13px;color:var(--text-muted);margin-top:3px;line-height:1.6;}
+.modal-footer{display:flex;align-items:center;justify-content:space-between;margin-top:2rem;padding-top:1.5rem;border-top:1px solid #F3F4F6;flex-wrap:wrap;gap:1rem;}
+.modal-price-label{font-size:12px;color:var(--text-muted);}
+.modal-price-val{font-size:28px;font-weight:800;color:var(--navy);}
+.modal-price-val span{font-size:14px;font-weight:400;}
+.modal-actions{display:flex;gap:10px;}
+.wa-btn{background:#25D366;color:var(--white);border:none;padding:12px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:8px;text-decoration:none;transition:all 0.2s;}
+.wa-btn:hover{background:#1da851;transform:translateY(-1px);}
+.enq-btn{background:var(--navy);color:var(--white);border:none;padding:12px 24px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;transition:all 0.2s;}
+.enq-btn:hover{background:var(--gold);color:var(--navy);}
 
 /* WHATSAPP FLOAT */
-.whatsapp-float { position:fixed; bottom:28px; right:28px; z-index:9999; width:58px; height:58px; background:#25D366; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 20px rgba(37,211,102,0.5); text-decoration:none; transition:transform 0.2s; }
-.whatsapp-float:hover { transform:scale(1.1); }
-.whatsapp-float svg { width:30px; height:30px; fill:white; }
-
-/* ANIMATIONS */
-@keyframes fadeInUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
-.reveal { opacity:0; transform:translateY(30px); transition:all 0.7s ease; }
-.reveal.visible { opacity:1; transform:translateY(0); }
+.whatsapp-float{position:fixed;bottom:28px;right:28px;z-index:9999;width:58px;height:58px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,0.5);text-decoration:none;transition:transform 0.2s;}
+.whatsapp-float:hover{transform:scale(1.1);}
+.whatsapp-float svg{width:30px;height:30px;fill:white;}
 
 /* RESPONSIVE */
-@media(max-width:900px) {
-  .search-fields { grid-template-columns:1fr 1fr; }
-  .stats-grid { grid-template-columns:repeat(2,1fr); }
-  .why-grid,.testi-grid { grid-template-columns:1fr; }
-  .footer-grid { grid-template-columns:1fr 1fr; }
-  .nav-links { display:none; }
-  .modal-highlights { grid-template-columns:1fr; }
+@media(max-width:900px){
+  .search-fields{grid-template-columns:1fr 1fr;}
+  .stats-grid{grid-template-columns:repeat(2,1fr);}
+  .why-grid,.testi-grid{grid-template-columns:1fr;}
+  .footer-grid{grid-template-columns:1fr 1fr;}
+  .nav-links{display:none;}
+  .modal-highlights{grid-template-columns:1fr;}
+  .nav-phone{display:none;}
 }
 </style>
 </head>
 <body>
 
 <!-- WHATSAPP FLOAT -->
-<a href="https://wa.me/919327975434?text=Hi!%20I%20am%20interested%20in%20a%20tour%20package%20from%20Go%20Beyond%20Travels." class="whatsapp-float" target="_blank">
+<a href="https://wa.me/916354177380?text=Hi!%20I%20am%20interested%20in%20a%20tour%20package%20from%20Go%20Beyond%20Travels." class="whatsapp-float" target="_blank">
   <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
 
@@ -247,56 +260,20 @@ footer { background:#060E1C; color:rgba(255,255,255,0.7); padding:4rem 2rem 2rem
     <li>
       <a href="#destinations">Holiday Packages ▾</a>
       <div class="mega-menu">
-        <div class="mega-col">
-          <h4>India</h4>
-          <a href="#" onclick="filterDest('India')">Goa</a>
-          <a href="#" onclick="filterDest('India')">Kerala</a>
-          <a href="#" onclick="filterDest('India')">Kashmir</a>
-          <a href="#" onclick="filterDest('India')">Rajasthan</a>
-          <a href="#" onclick="filterDest('India')">Himachal Pradesh</a>
-          <a href="#" onclick="filterDest('India')">Andaman</a>
-          <a href="#" onclick="filterDest('India')">Uttarakhand</a>
-        </div>
-        <div class="mega-col">
-          <h4>Asia</h4>
-          <a href="#" onclick="filterDest('Asia')">Bali</a>
-          <a href="#" onclick="filterDest('Asia')">Thailand</a>
-          <a href="#" onclick="filterDest('Asia')">Singapore & Malaysia</a>
-          <a href="#" onclick="filterDest('Asia')">Japan</a>
-          <a href="#" onclick="filterDest('Asia')">Vietnam</a>
-          <a href="#" onclick="filterDest('Asia')">Sri Lanka</a>
-          <a href="#" onclick="filterDest('Asia')">Maldives</a>
-        </div>
-        <div class="mega-col">
-          <h4>Europe</h4>
-          <a href="#" onclick="filterDest('Europe')">Switzerland</a>
-          <a href="#" onclick="filterDest('Europe')">France & Paris</a>
-          <a href="#" onclick="filterDest('Europe')">Italy</a>
-          <a href="#" onclick="filterDest('Europe')">Greece</a>
-          <a href="#" onclick="filterDest('Europe')">Spain & Portugal</a>
-          <a href="#" onclick="filterDest('Europe')">Scandinavia</a>
-          <a href="#" onclick="filterDest('Europe')">All of Europe</a>
-        </div>
-        <div class="mega-col">
-          <h4>Middle East & More</h4>
-          <a href="#" onclick="filterDest('Middle East')">Dubai & UAE</a>
-          <a href="#" onclick="filterDest('Middle East')">Oman & Muscat</a>
-          <a href="#" onclick="filterDest('Africa')">Egypt</a>
-          <a href="#" onclick="filterDest('Africa')">Kenya Safari</a>
-          <a href="#" onclick="filterDest('Americas')">USA</a>
-          <a href="#" onclick="filterDest('Americas')">Canada</a>
-          <a href="#" onclick="filterDest('Australia')">Australia & NZ</a>
-        </div>
+        <div class="mega-col"><h4>India</h4><a href="#" onclick="showDestPanel('india',null);return false;">Goa</a><a href="#" onclick="showDestPanel('india',null);return false;">Kerala</a><a href="#" onclick="showDestPanel('india',null);return false;">Kashmir</a><a href="#" onclick="showDestPanel('india',null);return false;">Rajasthan</a><a href="#" onclick="showDestPanel('india',null);return false;">Himachal Pradesh</a><a href="#" onclick="showDestPanel('india',null);return false;">Andaman</a></div>
+        <div class="mega-col"><h4>Asia</h4><a href="#" onclick="showDestPanel('asia',null);return false;">Bali</a><a href="#" onclick="showDestPanel('asia',null);return false;">Thailand</a><a href="#" onclick="showDestPanel('asia',null);return false;">Singapore & Malaysia</a><a href="#" onclick="showDestPanel('asia',null);return false;">Japan</a><a href="#" onclick="showDestPanel('asia',null);return false;">Vietnam</a><a href="#" onclick="showDestPanel('asia',null);return false;">Sri Lanka</a><a href="#" onclick="showDestPanel('asia',null);return false;">Maldives</a></div>
+        <div class="mega-col"><h4>Europe</h4><a href="#" onclick="showDestPanel('europe',null);return false;">Switzerland</a><a href="#" onclick="showDestPanel('europe',null);return false;">France & Paris</a><a href="#" onclick="showDestPanel('europe',null);return false;">Italy</a><a href="#" onclick="showDestPanel('europe',null);return false;">Greece</a><a href="#" onclick="showDestPanel('europe',null);return false;">Spain & Portugal</a><a href="#" onclick="showDestPanel('europe',null);return false;">All of Europe</a></div>
+        <div class="mega-col"><h4>More Destinations</h4><a href="#" onclick="showDestPanel('middleeast',null);return false;">Dubai & UAE</a><a href="#" onclick="showDestPanel('middleeast',null);return false;">Oman & Muscat</a><a href="#" onclick="showDestPanel('africa',null);return false;">Egypt</a><a href="#" onclick="showDestPanel('africa',null);return false;">Kenya Safari</a><a href="#" onclick="showDestPanel('americas',null);return false;">USA</a><a href="#" onclick="showDestPanel('americas',null);return false;">Canada</a><a href="#" onclick="showDestPanel('americas',null);return false;">Australia & NZ</a></div>
       </div>
     </li>
-    <li><a href="#themes">Theme Tours ▾</a></li>
+    <li><a href="#themes">Theme Tours</a></li>
     <li><a href="#packages">Packages</a></li>
     <li><a href="#about">Why Us</a></li>
     <li><a href="mailto:info@gobeyondco.in">Contact</a></li>
   </ul>
   <div class="nav-right">
-    <span class="nav-phone">📞 +91 93279 75434</span>
-    <button class="nav-cta" onclick="openEnquiry('General Enquiry','Any Destination','')">Send Enquiry</button>
+    <span class="nav-phone">📞 +91 63541 77380</span>
+    <button class="nav-cta" onclick="openEnquiry('General','Any Destination')">Send Enquiry</button>
   </div>
 </nav>
 
@@ -310,7 +287,7 @@ footer { background:#060E1C; color:rgba(255,255,255,0.7); padding:4rem 2rem 2rem
     <p class="hero-subtitle">Curated holiday packages with expert tour managers and a touch of home wherever you go. Ahmedabad's premium travel partner.</p>
     <div class="hero-btns">
       <a href="#packages" class="btn-primary">Explore Packages</a>
-      <a href="https://wa.me/919327975434?text=Hi!%20I%20want%20to%20plan%20a%20holiday." class="btn-outline" target="_blank">Chat on WhatsApp</a>
+      <a href="https://wa.me/916354177380?text=Hi!%20I%20want%20to%20plan%20a%20holiday." class="btn-outline" target="_blank">Chat on WhatsApp</a>
     </div>
   </div>
 </section>
@@ -325,32 +302,10 @@ footer { background:#060E1C; color:rgba(255,255,255,0.7); padding:4rem 2rem 2rem
     <button class="stab">Visa</button>
   </div>
   <div class="search-fields">
-    <div class="sfield">
-      <label>Destination</label>
-      <input type="text" id="search-dest" placeholder="Where do you want to go?">
-    </div>
-    <div class="sfield">
-      <label>Departure Date</label>
-      <input type="date">
-    </div>
-    <div class="sfield">
-      <label>Travelers</label>
-      <select>
-        <option>2 Adults</option>
-        <option>1 Adult</option>
-        <option>2 Adults, 1 Child</option>
-        <option>Family (4+)</option>
-      </select>
-    </div>
-    <div class="sfield">
-      <label>Budget</label>
-      <select>
-        <option>Any Budget</option>
-        <option>Under ₹50,000</option>
-        <option>₹50k – ₹1L</option>
-        <option>Above ₹1L</option>
-      </select>
-    </div>
+    <div class="sfield"><label>Destination</label><input type="text" id="search-dest" placeholder="Where do you want to go?"></div>
+    <div class="sfield"><label>Departure Date</label><input type="date"></div>
+    <div class="sfield"><label>Travelers</label><select><option>2 Adults</option><option>1 Adult</option><option>2 Adults, 1 Child</option><option>Family (4+)</option></select></div>
+    <div class="sfield"><label>Budget</label><select><option>Any Budget</option><option>Under ₹50,000</option><option>₹50k – ₹1L</option><option>Above ₹1L</option></select></div>
     <button class="search-btn" onclick="doSearch()">Search</button>
   </div>
 </div>
@@ -359,39 +314,21 @@ footer { background:#060E1C; color:rgba(255,255,255,0.7); padding:4rem 2rem 2rem
 <!-- MARQUEE -->
 <div class="marquee-wrap">
   <div class="marquee-track">
-    <span class="marquee-item">✈ Maldives Packages</span>&nbsp;&nbsp;&nbsp;
-    <span class="marquee-item">🗼 Europe Tours</span>&nbsp;&nbsp;&nbsp;
-    <span class="marquee-item">🌸 Japan 2026</span>&nbsp;&nbsp;&nbsp;
-    <span class="marquee-item">🏝 Bali Getaway</span>&nbsp;&nbsp;&nbsp;
-    <span class="marquee-item">🇦🇺 Australia Deals</span>&nbsp;&nbsp;&nbsp;
-    <span class="marquee-item">🇦🇪 Dubai Escapes</span>&nbsp;&nbsp;&nbsp;
-    <span class="marquee-item">🌍 Africa Safari</span>&nbsp;&nbsp;&nbsp;
-    <span class="marquee-item">🗽 USA Packages</span>&nbsp;&nbsp;&nbsp;
-    <span class="marquee-item">🏔 Kashmir Special</span>&nbsp;&nbsp;&nbsp;
-    <span class="marquee-item">🏖 Goa Holidays</span>&nbsp;&nbsp;&nbsp;
-    <span class="marquee-item">✈ Maldives Packages</span>&nbsp;&nbsp;&nbsp;
-    <span class="marquee-item">🗼 Europe Tours</span>&nbsp;&nbsp;&nbsp;
-    <span class="marquee-item">🌸 Japan 2026</span>&nbsp;&nbsp;&nbsp;
-    <span class="marquee-item">🏝 Bali Getaway</span>&nbsp;&nbsp;&nbsp;
-    <span class="marquee-item">🇦🇺 Australia Deals</span>&nbsp;&nbsp;&nbsp;
-    <span class="marquee-item">🇦🇪 Dubai Escapes</span>&nbsp;&nbsp;&nbsp;
-    <span class="marquee-item">🌍 Africa Safari</span>&nbsp;&nbsp;&nbsp;
-    <span class="marquee-item">🗽 USA Packages</span>&nbsp;&nbsp;&nbsp;
-    <span class="marquee-item">🏔 Kashmir Special</span>&nbsp;&nbsp;&nbsp;
-    <span class="marquee-item">🏖 Goa Holidays</span>&nbsp;&nbsp;&nbsp;
+    <span class="marquee-item">✈ Maldives Packages</span>&nbsp;&nbsp;&nbsp;<span class="marquee-item">🗼 Europe Tours</span>&nbsp;&nbsp;&nbsp;<span class="marquee-item">🌸 Japan 2026</span>&nbsp;&nbsp;&nbsp;<span class="marquee-item">🏝 Bali Getaway</span>&nbsp;&nbsp;&nbsp;<span class="marquee-item">🇦🇺 Australia Deals</span>&nbsp;&nbsp;&nbsp;<span class="marquee-item">🇦🇪 Dubai Escapes</span>&nbsp;&nbsp;&nbsp;<span class="marquee-item">🌍 Africa Safari</span>&nbsp;&nbsp;&nbsp;<span class="marquee-item">🗽 USA Packages</span>&nbsp;&nbsp;&nbsp;<span class="marquee-item">🏔 Kashmir Special</span>&nbsp;&nbsp;&nbsp;<span class="marquee-item">🍁 Canada Tours</span>&nbsp;&nbsp;&nbsp;<span class="marquee-item">🏖 Goa Holidays</span>&nbsp;&nbsp;&nbsp;<span class="marquee-item">🇬🇷 Greece Islands</span>&nbsp;&nbsp;&nbsp;
+    <span class="marquee-item">✈ Maldives Packages</span>&nbsp;&nbsp;&nbsp;<span class="marquee-item">🗼 Europe Tours</span>&nbsp;&nbsp;&nbsp;<span class="marquee-item">🌸 Japan 2026</span>&nbsp;&nbsp;&nbsp;<span class="marquee-item">🏝 Bali Getaway</span>&nbsp;&nbsp;&nbsp;<span class="marquee-item">🇦🇺 Australia Deals</span>&nbsp;&nbsp;&nbsp;<span class="marquee-item">🇦🇪 Dubai Escapes</span>&nbsp;&nbsp;&nbsp;<span class="marquee-item">🌍 Africa Safari</span>&nbsp;&nbsp;&nbsp;<span class="marquee-item">🗽 USA Packages</span>&nbsp;&nbsp;&nbsp;<span class="marquee-item">🏔 Kashmir Special</span>&nbsp;&nbsp;&nbsp;<span class="marquee-item">🍁 Canada Tours</span>&nbsp;&nbsp;&nbsp;<span class="marquee-item">🏖 Goa Holidays</span>&nbsp;&nbsp;&nbsp;<span class="marquee-item">🇬🇷 Greece Islands</span>&nbsp;&nbsp;&nbsp;
   </div>
 </div>
 
 <!-- DESTINATION DASHBOARD -->
 <section class="dest-dashboard" id="destinations">
   <div class="container">
-    <div class="section-header reveal">
+    <div class="section-header fade-up">
       <div class="section-label">Explore The World</div>
       <h2 class="section-title">Where Do You Want To Go?</h2>
-      <p class="section-sub">Browse destinations by region — click any destination to explore packages.</p>
+      <p class="section-sub">Browse destinations by region — click any card to explore packages.</p>
     </div>
-    <div class="dest-tabs">
-      <button class="dest-tab active" onclick="showDestPanel('all',this)">All Destinations</button>
+    <div class="dest-tabs fade-up delay-1">
+      <button class="dest-tab active" onclick="showDestPanel('all',this)">All</button>
       <button class="dest-tab" onclick="showDestPanel('india',this)">India</button>
       <button class="dest-tab" onclick="showDestPanel('asia',this)">Asia</button>
       <button class="dest-tab" onclick="showDestPanel('europe',this)">Europe</button>
@@ -401,22 +338,22 @@ footer { background:#060E1C; color:rgba(255,255,255,0.7); padding:4rem 2rem 2rem
     </div>
 
     <div class="dest-panel active" id="dp-all">
-      <div class="dest-card" onclick="openPkgModal('dubai')"><img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=500&q=80" alt="Dubai"><div class="dest-overlay"></div><div class="dest-tag-badge">Bestseller</div><div class="dest-info"><div class="dest-name">Dubai, UAE</div><div class="dest-sub">From ₹54,999</div></div></div>
-      <div class="dest-card" onclick="openPkgModal('bali')"><img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=500&q=80" alt="Bali"><div class="dest-overlay"></div><div class="dest-info"><div class="dest-name">Bali, Indonesia</div><div class="dest-sub">From ₹44,999</div></div></div>
-      <div class="dest-card" onclick="openPkgModal('europe')"><img src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=500&q=80" alt="Europe"><div class="dest-overlay"></div><div class="dest-tag-badge">Popular</div><div class="dest-info"><div class="dest-name">Europe</div><div class="dest-sub">From ₹89,999</div></div></div>
-      <div class="dest-card" onclick="openPkgModal('maldives')"><img src="https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=500&q=80" alt="Maldives"><div class="dest-overlay"></div><div class="dest-info"><div class="dest-name">Maldives</div><div class="dest-sub">From ₹64,999</div></div></div>
-      <div class="dest-card" onclick="openPkgModal('japan')"><img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=500&q=80" alt="Japan"><div class="dest-overlay"></div><div class="dest-info"><div class="dest-name">Japan</div><div class="dest-sub">From ₹1,09,999</div></div></div>
-      <div class="dest-card" onclick="openPkgModal('thailand')"><img src="https://images.unsplash.com/photo-1512100356356-de1b84283e18?w=500&q=80" alt="Thailand"><div class="dest-overlay"></div><div class="dest-info"><div class="dest-name">Thailand</div><div class="dest-sub">From ₹34,999</div></div></div>
-      <div class="dest-card" onclick="openPkgModal('singapore')"><img src="https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=500&q=80" alt="Singapore"><div class="dest-overlay"></div><div class="dest-info"><div class="dest-name">Singapore & Malaysia</div><div class="dest-sub">From ₹49,999</div></div></div>
-      <div class="dest-card" onclick="openPkgModal('australia')"><img src="https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?w=500&q=80" alt="Australia"><div class="dest-overlay"></div><div class="dest-info"><div class="dest-name">Australia & NZ</div><div class="dest-sub">From ₹1,49,999</div></div></div>
-      <div class="dest-card" onclick="openPkgModal('kashmir')"><img src="https://images.unsplash.com/photo-1566837945700-30057527ade0?w=500&q=80" alt="Kashmir"><div class="dest-overlay"></div><div class="dest-tag-badge">New</div><div class="dest-info"><div class="dest-name">Kashmir</div><div class="dest-sub">From ₹24,999</div></div></div>
-      <div class="dest-card" onclick="openPkgModal('kerala')"><img src="https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=500&q=80" alt="Kerala"><div class="dest-overlay"></div><div class="dest-info"><div class="dest-name">Kerala</div><div class="dest-sub">From ₹18,999</div></div></div>
-      <div class="dest-card" onclick="openPkgModal('egypt')"><img src="https://images.unsplash.com/photo-1539650116574-75c0c6d73f6e?w=500&q=80" alt="Egypt"><div class="dest-overlay"></div><div class="dest-info"><div class="dest-name">Egypt</div><div class="dest-sub">From ₹74,999</div></div></div>
-      <div class="dest-card" onclick="openPkgModal('usa')"><img src="https://images.unsplash.com/photo-1485738422979-f5c462d49f74?w=500&q=80" alt="USA"><div class="dest-overlay"></div><div class="dest-info"><div class="dest-name">USA</div><div class="dest-sub">From ₹1,29,999</div></div></div>
+      <div class="dest-card scale-in delay-1" onclick="openPkgModal('dubai')"><img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=500&q=80" alt="Dubai"><div class="dest-overlay"></div><div class="dest-tag-badge">Bestseller</div><div class="dest-info"><div class="dest-name">Dubai, UAE</div><div class="dest-sub">From ₹54,999</div></div></div>
+      <div class="dest-card scale-in delay-2" onclick="openPkgModal('bali')"><img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=500&q=80" alt="Bali"><div class="dest-overlay"></div><div class="dest-info"><div class="dest-name">Bali, Indonesia</div><div class="dest-sub">From ₹44,999</div></div></div>
+      <div class="dest-card scale-in delay-3" onclick="openPkgModal('europe')"><img src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=500&q=80" alt="Europe"><div class="dest-overlay"></div><div class="dest-tag-badge">Popular</div><div class="dest-info"><div class="dest-name">Europe</div><div class="dest-sub">From ₹89,999</div></div></div>
+      <div class="dest-card scale-in delay-4" onclick="openPkgModal('maldives')"><img src="https://images.unsplash.com/photo-1573843981267-be1999ff37cd?w=500&q=80" alt="Maldives"><div class="dest-overlay"></div><div class="dest-info"><div class="dest-name">Maldives</div><div class="dest-sub">From ₹64,999</div></div></div>
+      <div class="dest-card scale-in delay-1" onclick="openPkgModal('japan')"><img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=500&q=80" alt="Japan"><div class="dest-overlay"></div><div class="dest-info"><div class="dest-name">Japan</div><div class="dest-sub">From ₹1,09,999</div></div></div>
+      <div class="dest-card scale-in delay-2" onclick="openPkgModal('thailand')"><img src="https://images.unsplash.com/photo-1512100356356-de1b84283e18?w=500&q=80" alt="Thailand"><div class="dest-overlay"></div><div class="dest-info"><div class="dest-name">Thailand</div><div class="dest-sub">From ₹34,999</div></div></div>
+      <div class="dest-card scale-in delay-3" onclick="openPkgModal('singapore')"><img src="https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=500&q=80" alt="Singapore"><div class="dest-overlay"></div><div class="dest-info"><div class="dest-name">Singapore & Malaysia</div><div class="dest-sub">From ₹49,999</div></div></div>
+      <div class="dest-card scale-in delay-4" onclick="openPkgModal('australia')"><img src="https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?w=500&q=80" alt="Australia"><div class="dest-overlay"></div><div class="dest-info"><div class="dest-name">Australia & NZ</div><div class="dest-sub">From ₹1,49,999</div></div></div>
+      <div class="dest-card scale-in delay-1" onclick="openPkgModal('kashmir')"><img src="https://images.unsplash.com/photo-1609766418204-66fe3543c100?w=500&q=80" alt="Kashmir"><div class="dest-overlay"></div><div class="dest-tag-badge">New</div><div class="dest-info"><div class="dest-name">Kashmir</div><div class="dest-sub">From ₹24,999</div></div></div>
+      <div class="dest-card scale-in delay-2" onclick="openPkgModal('kerala')"><img src="https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=500&q=80" alt="Kerala"><div class="dest-overlay"></div><div class="dest-info"><div class="dest-name">Kerala</div><div class="dest-sub">From ₹18,999</div></div></div>
+      <div class="dest-card scale-in delay-3" onclick="openPkgModal('egypt')"><img src="https://images.unsplash.com/photo-1568322445389-f64ac2515020?w=500&q=80" alt="Egypt"><div class="dest-overlay"></div><div class="dest-info"><div class="dest-name">Egypt</div><div class="dest-sub">From ₹74,999</div></div></div>
+      <div class="dest-card scale-in delay-4" onclick="openPkgModal('canada')"><img src="https://images.unsplash.com/photo-1503614472-8c93d56e92ce?w=500&q=80" alt="Canada"><div class="dest-overlay"></div><div class="dest-info"><div class="dest-name">Canada</div><div class="dest-sub">From ₹1,39,999</div></div></div>
     </div>
 
     <div class="dest-panel" id="dp-india">
-      <div class="dest-card" onclick="openPkgModal('kashmir')"><img src="https://images.unsplash.com/photo-1566837945700-30057527ade0?w=500&q=80" alt="Kashmir"><div class="dest-overlay"></div><div class="dest-info"><div class="dest-name">Kashmir</div><div class="dest-sub">From ₹24,999</div></div></div>
+      <div class="dest-card" onclick="openPkgModal('kashmir')"><img src="https://images.unsplash.com/photo-1609766418204-66fe3543c100?w=500&q=80" alt="Kashmir"><div class="dest-overlay"></div><div class="dest-info"><div class="dest-name">Kashmir</div><div class="dest-sub">From ₹24,999</div></div></div>
       <div class="dest-card" onclick="openPkgModal('kerala')"><img src="https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=500&q=80" alt="Kerala"><div class="dest-overlay"></div><div class="dest-info"><div class="dest-name">Kerala</div><div class="dest-sub">From ₹18,999</div></div></div>
       <div class="dest-card" onclick="openPkgModal('goa')"><img src="https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?w=500&q=80" alt="Goa"><div class="dest-overlay"></div><div class="dest-info"><div class="dest-name">Goa</div><div class="dest-sub">From ₹12,999</div></div></div>
       <div class="dest-card" onclick="openPkgModal('rajasthan')"><img src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=500&q=80" alt="Rajasthan"><div class="dest-overlay"></div><div class="dest-info"><div class="dest-name">Rajasthan</div><div class="dest-sub">From ₹14,999</div></div></div>
@@ -429,33 +366,34 @@ footer { background:#060E1C; color:rgba(255,255,255,0.7); padding:4rem 2rem 2rem
       <div class="dest-card" onclick="openPkgModal('thailand')"><img src="https://images.unsplash.com/photo-1512100356356-de1b84283e18?w=500&q=80" alt="Thailand"><div class="dest-overlay"></div><div class="dest-info"><div class="dest-name">Thailand</div><div class="dest-sub">From ₹34,999</div></div></div>
       <div class="dest-card" onclick="openPkgModal('singapore')"><img src="https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=500&q=80" alt="Singapore"><div class="dest-overlay"></div><div class="dest-info"><div class="dest-name">Singapore & Malaysia</div><div class="dest-sub">From ₹49,999</div></div></div>
       <div class="dest-card" onclick="openPkgModal('japan')"><img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=500&q=80" alt="Japan"><div class="dest-overlay"></div><div class="dest-info"><div class="dest-name">Japan</div><div class="dest-sub">From ₹1,09,999</div></div></div>
-      <div class="dest-card" onclick="openPkgModal('maldives')"><img src="https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=500&q=80" alt="Maldives"><div class="dest-overlay"></div><div class="dest-info"><div class="dest-name">Maldives</div><div class="dest-sub">From ₹64,999</div></div></div>
+      <div class="dest-card" onclick="openPkgModal('maldives')"><img src="https://images.unsplash.com/photo-1573843981267-be1999ff37cd?w=500&q=80" alt="Maldives"><div class="dest-overlay"></div><div class="dest-info"><div class="dest-name">Maldives</div><div class="dest-sub">From ₹64,999</div></div></div>
       <div class="dest-card" onclick="openPkgModal('vietnam')"><img src="https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=500&q=80" alt="Vietnam"><div class="dest-overlay"></div><div class="dest-info"><div class="dest-name">Vietnam</div><div class="dest-sub">From ₹39,999</div></div></div>
+      <div class="dest-card" onclick="openPkgModal('srilanka')"><img src="https://images.unsplash.com/photo-1590123715937-b3c39d40e32d?w=500&q=80" alt="Sri Lanka"><div class="dest-overlay"></div><div class="dest-info"><div class="dest-name">Sri Lanka</div><div class="dest-sub">From ₹29,999</div></div></div>
     </div>
 
     <div class="dest-panel" id="dp-europe">
       <div class="dest-card" onclick="openPkgModal('europe')"><img src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=500&q=80" alt="Paris"><div class="dest-overlay"></div><div class="dest-tag-badge">Popular</div><div class="dest-info"><div class="dest-name">France & Paris</div><div class="dest-sub">From ₹89,999</div></div></div>
       <div class="dest-card" onclick="openPkgModal('switzerland')"><img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500&q=80" alt="Switzerland"><div class="dest-overlay"></div><div class="dest-info"><div class="dest-name">Switzerland</div><div class="dest-sub">From ₹99,999</div></div></div>
-      <div class="dest-card" onclick="openPkgModal('europe')"><img src="https://images.unsplash.com/photo-1525874684015-58379d421a52?w=500&q=80" alt="Greece"><div class="dest-overlay"></div><div class="dest-info"><div class="dest-name">Greece</div><div class="dest-sub">From ₹94,999</div></div></div>
+      <div class="dest-card" onclick="openPkgModal('greece')"><img src="https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=500&q=80" alt="Greece"><div class="dest-overlay"></div><div class="dest-info"><div class="dest-name">Greece</div><div class="dest-sub">From ₹94,999</div></div></div>
       <div class="dest-card" onclick="openPkgModal('europe')"><img src="https://images.unsplash.com/photo-1533929736458-ca588d08c8be?w=500&q=80" alt="Italy"><div class="dest-overlay"></div><div class="dest-info"><div class="dest-name">Italy</div><div class="dest-sub">From ₹89,999</div></div></div>
       <div class="dest-card" onclick="openPkgModal('europe')"><img src="https://images.unsplash.com/photo-1505761671935-60b3a7427bad?w=500&q=80" alt="Europe"><div class="dest-overlay"></div><div class="dest-info"><div class="dest-name">All of Europe</div><div class="dest-sub">From ₹1,19,999</div></div></div>
-      <div class="dest-card" onclick="openPkgModal('europe')"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&q=80" alt="Scandinavia"><div class="dest-overlay"></div><div class="dest-info"><div class="dest-name">Scandinavia</div><div class="dest-sub">From ₹1,29,999</div></div></div>
+      <div class="dest-card" onclick="openPkgModal('europe')"><img src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=500&q=80" alt="Scandinavia"><div class="dest-overlay"></div><div class="dest-info"><div class="dest-name">Scandinavia</div><div class="dest-sub">From ₹1,29,999</div></div></div>
     </div>
 
     <div class="dest-panel" id="dp-middleeast">
       <div class="dest-card" onclick="openPkgModal('dubai')"><img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=500&q=80" alt="Dubai"><div class="dest-overlay"></div><div class="dest-tag-badge">Bestseller</div><div class="dest-info"><div class="dest-name">Dubai & UAE</div><div class="dest-sub">From ₹54,999</div></div></div>
-      <div class="dest-card" onclick="openPkgModal('oman')"><img src="https://images.unsplash.com/photo-1578895101408-1a36b834405b?w=500&q=80" alt="Oman"><div class="dest-overlay"></div><div class="dest-info"><div class="dest-name">Oman & Muscat</div><div class="dest-sub">From ₹49,999</div></div></div>
+      <div class="dest-card" onclick="openPkgModal('oman')"><img src="https://images.unsplash.com/photo-1583422409516-2895a77efded?w=500&q=80" alt="Oman"><div class="dest-overlay"></div><div class="dest-info"><div class="dest-name">Oman & Muscat</div><div class="dest-sub">From ₹49,999</div></div></div>
     </div>
 
     <div class="dest-panel" id="dp-africa">
-      <div class="dest-card" onclick="openPkgModal('egypt')"><img src="https://images.unsplash.com/photo-1539650116574-75c0c6d73f6e?w=500&q=80" alt="Egypt"><div class="dest-overlay"></div><div class="dest-info"><div class="dest-name">Egypt</div><div class="dest-sub">From ₹74,999</div></div></div>
+      <div class="dest-card" onclick="openPkgModal('egypt')"><img src="https://images.unsplash.com/photo-1568322445389-f64ac2515020?w=500&q=80" alt="Egypt"><div class="dest-overlay"></div><div class="dest-info"><div class="dest-name">Egypt</div><div class="dest-sub">From ₹74,999</div></div></div>
       <div class="dest-card" onclick="openPkgModal('kenya')"><img src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=500&q=80" alt="Kenya"><div class="dest-overlay"></div><div class="dest-info"><div class="dest-name">Kenya Safari</div><div class="dest-sub">From ₹1,09,999</div></div></div>
     </div>
 
     <div class="dest-panel" id="dp-americas">
       <div class="dest-card" onclick="openPkgModal('usa')"><img src="https://images.unsplash.com/photo-1485738422979-f5c462d49f74?w=500&q=80" alt="USA"><div class="dest-overlay"></div><div class="dest-info"><div class="dest-name">USA</div><div class="dest-sub">From ₹1,29,999</div></div></div>
-      <div class="dest-card" onclick="openPkgModal('australia')"><img src="https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?w=500&q=80" alt="Australia"><div class="dest-overlay"></div><div class="dest-info"><div class="dest-name">Australia & NZ</div><div class="dest-sub">From ₹1,49,999</div></div></div>
       <div class="dest-card" onclick="openPkgModal('canada')"><img src="https://images.unsplash.com/photo-1503614472-8c93d56e92ce?w=500&q=80" alt="Canada"><div class="dest-overlay"></div><div class="dest-info"><div class="dest-name">Canada</div><div class="dest-sub">From ₹1,39,999</div></div></div>
+      <div class="dest-card" onclick="openPkgModal('australia')"><img src="https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?w=500&q=80" alt="Australia"><div class="dest-overlay"></div><div class="dest-info"><div class="dest-name">Australia & NZ</div><div class="dest-sub">From ₹1,49,999</div></div></div>
     </div>
   </div>
 </section>
@@ -463,20 +401,20 @@ footer { background:#060E1C; color:rgba(255,255,255,0.7); padding:4rem 2rem 2rem
 <!-- THEMES -->
 <section id="themes">
   <div class="container">
-    <div class="section-header reveal">
+    <div class="section-header fade-up">
       <div class="section-label">Browse By Theme</div>
       <h2 class="section-title">Travel Your Way</h2>
       <p class="section-sub">Every trip is unique — find the style that matches your soul.</p>
     </div>
     <div class="themes-grid">
-      <div class="theme-card reveal" onclick="filterPkg('Honeymoon')"><img src="https://images.unsplash.com/photo-1518602164578-cd0074062767?w=400&q=75" alt="Honeymoon"><div class="theme-card-overlay"></div><div class="theme-card-info"><div class="theme-card-name">Honeymoon</div><div class="theme-card-count">12+ Tours</div></div></div>
-      <div class="theme-card reveal" onclick="filterPkg('Group')"><img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=400&q=75" alt="Group Tours"><div class="theme-card-overlay"></div><div class="theme-card-info"><div class="theme-card-name">Group Tours</div><div class="theme-card-count">20+ Tours</div></div></div>
-      <div class="theme-card reveal" onclick="filterPkg('Family')"><img src="https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=400&q=75" alt="Family"><div class="theme-card-overlay"></div><div class="theme-card-info"><div class="theme-card-name">Family Holidays</div><div class="theme-card-count">15+ Tours</div></div></div>
-      <div class="theme-card reveal" onclick="filterPkg('Adventure')"><img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=400&q=75" alt="Adventure"><div class="theme-card-overlay"></div><div class="theme-card-info"><div class="theme-card-name">Adventure</div><div class="theme-card-count">8+ Tours</div></div></div>
-      <div class="theme-card reveal" onclick="filterPkg('Luxury')"><img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=400&q=75" alt="Luxury"><div class="theme-card-overlay"></div><div class="theme-card-info"><div class="theme-card-name">Luxury Exotic</div><div class="theme-card-count">10+ Tours</div></div></div>
-      <div class="theme-card reveal" onclick="filterPkg('Short')"><img src="https://images.unsplash.com/photo-1501555088652-021faa106b9b?w=400&q=75" alt="Short Breaks"><div class="theme-card-overlay"></div><div class="theme-card-info"><div class="theme-card-name">Short Breaks</div><div class="theme-card-count">6+ Tours</div></div></div>
-      <div class="theme-card reveal" onclick="filterPkg('India')"><img src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=400&q=75" alt="India Tours"><div class="theme-card-overlay"></div><div class="theme-card-info"><div class="theme-card-name">India Tours</div><div class="theme-card-count">18+ Tours</div></div></div>
-      <div class="theme-card reveal" onclick="filterPkg('All')"><img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=400&q=75" alt="All Packages"><div class="theme-card-overlay"></div><div class="theme-card-info"><div class="theme-card-name">All Packages</div><div class="theme-card-count">70+ Tours</div></div></div>
+      <div class="theme-card fade-up delay-1" onclick="filterPkg('Honeymoon',null)"><img src="https://images.unsplash.com/photo-1518602164578-cd0074062767?w=400&q=75" alt="Honeymoon"><div class="theme-card-overlay"></div><div class="theme-card-info"><div class="theme-card-name">Honeymoon</div><div class="theme-card-count">12+ Tours</div></div></div>
+      <div class="theme-card fade-up delay-2" onclick="filterPkg('Group',null)"><img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=400&q=75" alt="Group Tours"><div class="theme-card-overlay"></div><div class="theme-card-info"><div class="theme-card-name">Group Tours</div><div class="theme-card-count">20+ Tours</div></div></div>
+      <div class="theme-card fade-up delay-3" onclick="filterPkg('Family',null)"><img src="https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=400&q=75" alt="Family"><div class="theme-card-overlay"></div><div class="theme-card-info"><div class="theme-card-name">Family Holidays</div><div class="theme-card-count">15+ Tours</div></div></div>
+      <div class="theme-card fade-up delay-4" onclick="filterPkg('Adventure',null)"><img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=400&q=75" alt="Adventure"><div class="theme-card-overlay"></div><div class="theme-card-info"><div class="theme-card-name">Adventure</div><div class="theme-card-count">8+ Tours</div></div></div>
+      <div class="theme-card fade-up delay-1" onclick="filterPkg('Luxury',null)"><img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=400&q=75" alt="Luxury"><div class="theme-card-overlay"></div><div class="theme-card-info"><div class="theme-card-name">Luxury Exotic</div><div class="theme-card-count">10+ Tours</div></div></div>
+      <div class="theme-card fade-up delay-2" onclick="filterPkg('Short',null)"><img src="https://images.unsplash.com/photo-1501555088652-021faa106b9b?w=400&q=75" alt="Short Breaks"><div class="theme-card-overlay"></div><div class="theme-card-info"><div class="theme-card-name">Short Breaks</div><div class="theme-card-count">6+ Tours</div></div></div>
+      <div class="theme-card fade-up delay-3" onclick="filterPkg('India',null)"><img src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=400&q=75" alt="India Tours"><div class="theme-card-overlay"></div><div class="theme-card-info"><div class="theme-card-name">India Tours</div><div class="theme-card-count">18+ Tours</div></div></div>
+      <div class="theme-card fade-up delay-4" onclick="filterPkg('All',null)"><img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=400&q=75" alt="All Packages"><div class="theme-card-overlay"></div><div class="theme-card-info"><div class="theme-card-name">All Packages</div><div class="theme-card-count">70+ Tours</div></div></div>
     </div>
   </div>
 </section>
@@ -484,12 +422,12 @@ footer { background:#060E1C; color:rgba(255,255,255,0.7); padding:4rem 2rem 2rem
 <!-- PACKAGES -->
 <section style="background:var(--off-white)" id="packages">
   <div class="container">
-    <div class="section-header reveal">
+    <div class="section-header fade-up">
       <div class="section-label">Featured Packages</div>
       <h2 class="section-title">Top Holiday Packages</h2>
       <p class="section-sub">Thoughtfully crafted, competitively priced, and loved by thousands.</p>
     </div>
-    <div class="pkg-filter-tabs">
+    <div class="pkg-filter-tabs fade-up delay-1">
       <button class="pkg-tab active" onclick="filterPkg('All',this)">All</button>
       <button class="pkg-tab" onclick="filterPkg('International',this)">International</button>
       <button class="pkg-tab" onclick="filterPkg('India',this)">India</button>
@@ -499,7 +437,7 @@ footer { background:#060E1C; color:rgba(255,255,255,0.7); padding:4rem 2rem 2rem
       <button class="pkg-tab" onclick="filterPkg('Short',this)">Short Breaks</button>
     </div>
     <div class="packages-grid" id="packages-grid"></div>
-    <div style="text-align:center;margin-top:2.5rem">
+    <div style="text-align:center;margin-top:2.5rem" class="fade-up">
       <button class="btn-primary" onclick="showAllPkgs()">View All Packages</button>
     </div>
   </div>
@@ -509,10 +447,10 @@ footer { background:#060E1C; color:rgba(255,255,255,0.7); padding:4rem 2rem 2rem
 <section class="stats-section">
   <div class="container">
     <div class="stats-grid">
-      <div class="reveal"><div class="stat-num" data-target="5">0</div><div class="stat-label">Years of Experience</div></div>
-      <div class="reveal"><div class="stat-num" data-target="5000">0</div><div class="stat-label">Happy Travelers</div></div>
-      <div class="reveal"><div class="stat-num" data-target="50">0</div><div class="stat-label">Destinations</div></div>
-      <div class="reveal"><div class="stat-num" data-target="200">0</div><div class="stat-label">Tour Packages</div></div>
+      <div class="fade-up delay-1"><div class="stat-num" data-target="5">0</div><div class="stat-label">Years of Experience</div></div>
+      <div class="fade-up delay-2"><div class="stat-num" data-target="5000">0</div><div class="stat-label">Happy Travelers</div></div>
+      <div class="fade-up delay-3"><div class="stat-num" data-target="50">0</div><div class="stat-label">Destinations</div></div>
+      <div class="fade-up delay-4"><div class="stat-num" data-target="200">0</div><div class="stat-label">Tour Packages</div></div>
     </div>
   </div>
 </section>
@@ -520,18 +458,18 @@ footer { background:#060E1C; color:rgba(255,255,255,0.7); padding:4rem 2rem 2rem
 <!-- WHY US -->
 <section id="about">
   <div class="container">
-    <div class="section-header reveal">
+    <div class="section-header fade-up">
       <div class="section-label">Why Go Beyond</div>
       <h2 class="section-title">Travel With Confidence</h2>
       <p class="section-sub">Everything we do is designed to make your journey unforgettable.</p>
     </div>
     <div class="why-grid">
-      <div class="why-card reveal"><div class="why-icon">🏆</div><div class="why-title">5+ Years of Excellence</div><div class="why-desc">Half a decade of crafting perfect holidays means we know every detail that makes a trip truly unforgettable.</div></div>
-      <div class="why-card reveal"><div class="why-icon">👨‍🍳</div><div class="why-title">Indian Food, Everywhere</div><div class="why-desc">Our Maharaj tours come with an Indian chef so you never compromise on the taste of home, wherever you are.</div></div>
-      <div class="why-card reveal"><div class="why-icon">🧭</div><div class="why-title">Expert Tour Managers</div><div class="why-desc">Experienced, empathetic guides accompany every group tour, handling logistics so you can focus on the joy.</div></div>
-      <div class="why-card reveal"><div class="why-icon">💳</div><div class="why-title">Easy Visa Assistance</div><div class="why-desc">End-to-end visa support, documentation guidance, and fast turnaround — we make it stress-free.</div></div>
-      <div class="why-card reveal"><div class="why-icon">🌐</div><div class="why-title">50+ Destinations</div><div class="why-desc">From Kashmir to Kiwi Land — we cover destinations across 6 continents with trusted local partners.</div></div>
-      <div class="why-card reveal"><div class="why-icon">📞</div><div class="why-title">24/7 Support</div><div class="why-desc">Our team is always a call or WhatsApp away — before, during, and after your trip. Never on your own.</div></div>
+      <div class="why-card fade-left delay-1"><div class="why-icon">🏆</div><div class="why-title">5+ Years of Excellence</div><div class="why-desc">Half a decade of crafting perfect holidays means we know every detail that makes a trip truly unforgettable.</div></div>
+      <div class="why-card fade-up delay-2"><div class="why-icon">👨‍🍳</div><div class="why-title">Indian Food, Everywhere</div><div class="why-desc">Our Maharaj tours come with an Indian chef so you never compromise on the taste of home, wherever you are.</div></div>
+      <div class="why-card fade-right delay-3"><div class="why-icon">🧭</div><div class="why-title">Expert Tour Managers</div><div class="why-desc">Experienced, empathetic guides accompany every group tour, handling logistics so you can focus on the joy.</div></div>
+      <div class="why-card fade-left delay-1"><div class="why-icon">💳</div><div class="why-title">Easy Visa Assistance</div><div class="why-desc">End-to-end visa support, documentation guidance, and fast turnaround — we make it completely stress-free.</div></div>
+      <div class="why-card fade-up delay-2"><div class="why-icon">🌐</div><div class="why-title">50+ Destinations</div><div class="why-desc">From Kashmir to Kiwi Land — we cover destinations across 6 continents with trusted local partners.</div></div>
+      <div class="why-card fade-right delay-3"><div class="why-icon">📞</div><div class="why-title">24/7 Support</div><div class="why-desc">Our team is always a call or WhatsApp away — before, during, and after your trip. Never on your own.</div></div>
     </div>
   </div>
 </section>
@@ -539,14 +477,14 @@ footer { background:#060E1C; color:rgba(255,255,255,0.7); padding:4rem 2rem 2rem
 <!-- TESTIMONIALS -->
 <section class="testi-bg">
   <div class="container">
-    <div class="section-header reveal">
+    <div class="section-header fade-up">
       <div class="section-label">Traveler Stories</div>
       <h2 class="section-title">What Our Guests Say</h2>
     </div>
     <div class="testi-grid">
-      <div class="testi-card reveal"><div class="stars">★★★★★</div><p class="testi-text">"Go Beyond made our Europe honeymoon absolutely magical. Every detail was perfectly handled and the Indian food abroad was a beautiful bonus."</p><div class="testi-author"><div class="testi-avatar">PR</div><div><div class="testi-name">Priya & Rahul Shah</div><div class="testi-loc">Ahmedabad</div></div></div></div>
-      <div class="testi-card reveal"><div class="stars">★★★★★</div><p class="testi-text">"We did a group tour to Japan with 18 people. The tour manager was exceptional — calm, knowledgeable, and incredibly helpful throughout."</p><div class="testi-author"><div class="testi-avatar">AM</div><div><div class="testi-name">Amit Mehta</div><div class="testi-loc">Surat</div></div></div></div>
-      <div class="testi-card reveal"><div class="stars">★★★★★</div><p class="testi-text">"Best Maldives trip ever! The overwater villa package was worth every rupee. Already planning our next trip with Go Beyond."</p><div class="testi-author"><div class="testi-avatar">KP</div><div><div class="testi-name">Kavita Patel</div><div class="testi-loc">Baroda</div></div></div></div>
+      <div class="testi-card fade-up delay-1"><div class="stars">★★★★★</div><p class="testi-text">"Go Beyond made our Europe honeymoon absolutely magical. Every detail was perfectly handled and the Indian food abroad was a beautiful bonus."</p><div class="testi-author"><div class="testi-avatar">PR</div><div><div class="testi-name">Priya & Rahul Shah</div><div class="testi-loc">Ahmedabad</div></div></div></div>
+      <div class="testi-card fade-up delay-2"><div class="stars">★★★★★</div><p class="testi-text">"We did a group tour to Japan with 18 people. The tour manager was exceptional — calm, knowledgeable, and incredibly helpful throughout."</p><div class="testi-author"><div class="testi-avatar">AM</div><div><div class="testi-name">Amit Mehta</div><div class="testi-loc">Surat</div></div></div></div>
+      <div class="testi-card fade-up delay-3"><div class="stars">★★★★★</div><p class="testi-text">"Best Maldives trip ever! The overwater villa package was worth every rupee. Already planning our next trip with Go Beyond."</p><div class="testi-author"><div class="testi-avatar">KP</div><div><div class="testi-name">Kavita Patel</div><div class="testi-loc">Baroda</div></div></div></div>
     </div>
   </div>
 </section>
@@ -555,9 +493,9 @@ footer { background:#060E1C; color:rgba(255,255,255,0.7); padding:4rem 2rem 2rem
 <section class="cta-section">
   <div class="cta-glow"></div>
   <div class="container">
-    <h2 class="cta-title">Ready to Go Beyond?</h2>
-    <p class="cta-sub">Drop your number and our travel expert will call you back within 30 minutes.</p>
-    <div class="cta-btns">
+    <h2 class="cta-title fade-up">Ready to Go Beyond?</h2>
+    <p class="cta-sub fade-up delay-1">Drop your number and our travel expert will call you back within 30 minutes.</p>
+    <div class="cta-btns fade-up delay-2">
       <input class="cta-input" type="tel" id="cta-phone" placeholder="Your phone number">
       <button class="btn-primary" style="padding:14px 28px" onclick="ctaCallback()">Get a Free Callback</button>
     </div>
@@ -568,54 +506,17 @@ footer { background:#060E1C; color:rgba(255,255,255,0.7); padding:4rem 2rem 2rem
 <footer>
   <div class="footer-grid">
     <div class="footer-brand footer-col">
-      <a href="#" class="logo" style="display:inline-flex">
-        <div class="logo-icon" style="width:32px;height:32px;font-size:15px">✈</div>
-        <span class="logo-text" style="font-size:17px;margin-left:8px">Go <span>Beyond</span></span>
-      </a>
+      <a href="#" class="logo" style="display:inline-flex"><div class="logo-icon" style="width:32px;height:32px;font-size:15px">✈</div><span class="logo-text" style="font-size:17px;margin-left:8px">Go <span>Beyond</span></span></a>
       <p>Your trusted travel partner for international and domestic holidays. Crafting unforgettable journeys from Ahmedabad.</p>
     </div>
-    <div class="footer-col">
-      <h4>Destinations</h4>
-      <ul>
-        <li><a href="#" onclick="showDestPanel('europe',null)">Europe</a></li>
-        <li><a href="#" onclick="openPkgModal('japan')">Japan</a></li>
-        <li><a href="#" onclick="openPkgModal('maldives')">Maldives</a></li>
-        <li><a href="#" onclick="openPkgModal('dubai')">Dubai</a></li>
-        <li><a href="#" onclick="openPkgModal('thailand')">Thailand</a></li>
-        <li><a href="#" onclick="openPkgModal('australia')">Australia</a></li>
-        <li><a href="#" onclick="openPkgModal('kashmir')">Kashmir</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Our Tours</h4>
-      <ul>
-        <li><a href="#" onclick="filterPkg('Group')">Group Tours</a></li>
-        <li><a href="#" onclick="filterPkg('Honeymoon')">Honeymoon</a></li>
-        <li><a href="#" onclick="filterPkg('Luxury')">Luxury Exotic</a></li>
-        <li><a href="#" onclick="filterPkg('Adventure')">Adventure</a></li>
-        <li><a href="#" onclick="filterPkg('Short')">Short Breaks</a></li>
-        <li><a href="#" onclick="filterPkg('Family')">Family Holidays</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Contact Us</h4>
-      <ul>
-        <li><a href="#">📍 501, Aaryan Workspace, above Wagh Bakri Tea Lounge, St. Xavier's College Corner, Ahmedabad 380009</a></li>
-        <li><a href="tel:+919327975434">📞 +91 93279 75434</a></li>
-        <li><a href="mailto:info@gobeyondco.in">✉ info@gobeyondco.in</a></li>
-        <li><a href="https://wa.me/919327975434" target="_blank">💬 WhatsApp Us</a></li>
-        <li><a href="#">Instagram</a></li>
-        <li><a href="#">Facebook</a></li>
-      </ul>
-    </div>
+    <div class="footer-col"><h4>Destinations</h4><ul><li><a href="#" onclick="showDestPanel('europe',null);return false;">Europe</a></li><li><a href="#" onclick="openPkgModal('japan');return false;">Japan</a></li><li><a href="#" onclick="openPkgModal('maldives');return false;">Maldives</a></li><li><a href="#" onclick="openPkgModal('dubai');return false;">Dubai</a></li><li><a href="#" onclick="openPkgModal('thailand');return false;">Thailand</a></li><li><a href="#" onclick="openPkgModal('canada');return false;">Canada</a></li><li><a href="#" onclick="openPkgModal('kashmir');return false;">Kashmir</a></li></ul></div>
+    <div class="footer-col"><h4>Our Tours</h4><ul><li><a href="#" onclick="filterPkg('Group',null);return false;">Group Tours</a></li><li><a href="#" onclick="filterPkg('Honeymoon',null);return false;">Honeymoon</a></li><li><a href="#" onclick="filterPkg('Luxury',null);return false;">Luxury Exotic</a></li><li><a href="#" onclick="filterPkg('Adventure',null);return false;">Adventure</a></li><li><a href="#" onclick="filterPkg('Short',null);return false;">Short Breaks</a></li><li><a href="#" onclick="filterPkg('Family',null);return false;">Family Holidays</a></li></ul></div>
+    <div class="footer-col"><h4>Contact Us</h4><ul><li><a href="#">📍 501, Aaryan Workspace, above Wagh Bakri Tea Lounge, St. Xavier's Corner, Ahmedabad 380009</a></li><li><a href="tel:+916354177380">📞 +91 63541 77380</a></li><li><a href="mailto:info@gobeyondco.in">✉ info@gobeyondco.in</a></li><li><a href="https://wa.me/916354177380" target="_blank">💬 WhatsApp Us</a></li><li><a href="#">Instagram</a></li><li><a href="#">Facebook</a></li></ul></div>
   </div>
-  <div class="footer-bottom">
-    <span>© 2026 Go Beyond Travels. All rights reserved.</span>
-    <span>Privacy Policy · Terms · Sitemap</span>
-  </div>
+  <div class="footer-bottom"><span>© 2026 Go Beyond Travels. All rights reserved.</span><span>Privacy Policy · Terms · Sitemap</span></div>
 </footer>
 
-<!-- PACKAGE DETAIL MODAL -->
+<!-- MODAL -->
 <div class="modal-overlay" id="pkg-modal" onclick="closeModal(event)">
   <div class="modal" id="modal-inner">
     <button class="modal-close" onclick="closePkgModal()">✕</button>
@@ -631,59 +532,72 @@ footer { background:#060E1C; color:rgba(255,255,255,0.7); padding:4rem 2rem 2rem
       <p class="modal-desc" id="modal-desc"></p>
       <div class="modal-section-title">Highlights</div>
       <div class="modal-highlights" id="modal-highlights"></div>
-      <div class="modal-section-title">Itinerary</div>
+      <div class="modal-section-title">Day-by-Day Itinerary</div>
       <div class="modal-itinerary" id="modal-itinerary"></div>
       <div class="modal-footer">
-        <div class="modal-price-box"><div class="modal-price-label">Starting from</div><div class="modal-price-val" id="modal-price"></div></div>
-        <div class="modal-actions">
-          <a class="wa-btn" id="modal-wa" href="#" target="_blank">💬 WhatsApp Enquiry</a>
-          <button class="enq-btn" onclick="openEnquiryFromModal()">Send Enquiry</button>
-        </div>
+        <div><div class="modal-price-label">Starting from</div><div class="modal-price-val" id="modal-price"></div></div>
+        <div class="modal-actions"><a class="wa-btn" id="modal-wa" href="#" target="_blank">💬 WhatsApp Enquiry</a><button class="enq-btn" onclick="openEnquiryFromModal()">Send Enquiry</button></div>
       </div>
     </div>
   </div>
 </div>
 
 <script>
-const WA = '919327975434';
+const WA='916354177380';
 
-const packages = [
-  { id:'dubai', name:'Dubai Discovery', dest:'Dubai, UAE', region:'Middle East', category:['International','Group','Short'], badge:'Bestseller', price:'₹54,999', priceNum:54999, img:'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800&q=80', duration:'5N / 6D', type:'Group & Private', meals:'Daily Breakfast', visa:'On Arrival', desc:'Experience the dazzling city of Dubai — the jewel of the Middle East. From the iconic Burj Khalifa to thrilling desert safaris, dhow cruises on the creek, and world-class shopping at Dubai Mall and Gold Souk. This carefully crafted package ensures you see the best of Dubai in comfort, with Indian vegetarian meal options available.', highlights:['Burj Khalifa At The Top visit','Desert Safari with BBQ dinner','Dubai Mall & Fountain Show','Gold Souk & Spice Souk tour','Dhow Cruise on Dubai Creek','Palm Jumeirah & Atlantis view','Miracle Garden (seasonal)','Comfortable 4-star hotel stay'], itinerary:[{day:'Day 1',title:'Arrival & City Tour',desc:'Arrive in Dubai, hotel check-in. Evening Dubai Creek Dhow Cruise with dinner.'},{day:'Day 2',title:'Modern Dubai',desc:'Visit Burj Khalifa, Dubai Mall, Dubai Fountain show. Walk through downtown Dubai.'},{day:'Day 3',title:'Desert Safari',desc:'Morning free. Afternoon thrilling desert safari — dune bashing, camel ride, belly dance, BBQ dinner under the stars.'},{day:'Day 4',title:'Old Dubai & Shopping',desc:'Gold Souk, Spice Souk, Al Fahidi heritage area. Afternoon at City Walk or Global Village (seasonal).'},{day:'Day 5',title:'Abu Dhabi Day Trip',desc:'Full day Abu Dhabi — Sheikh Zayed Grand Mosque, Ferrari World or Yas Island.'},{day:'Day 6',title:'Departure',desc:'Morning free for shopping. Transfer to airport for departure.'}] },
+const packages=[
+  {id:'dubai',name:'Dubai Discovery',dest:'Dubai, UAE',region:'Middle East',category:['International','Group','Short'],badge:'Bestseller',price:'₹54,999',priceNum:54999,img:'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800&q=80',duration:'5N / 6D',type:'Group & Private',meals:'Daily Breakfast',visa:'On Arrival',desc:'Experience the dazzling city of Dubai — the jewel of the Middle East. From the iconic Burj Khalifa to thrilling desert safaris, dhow cruises on the creek, and world-class shopping at Dubai Mall and Gold Souk. This carefully crafted package ensures you see the best of Dubai in comfort, with Indian vegetarian meal options available throughout.',highlights:['Burj Khalifa At The Top visit','Desert Safari with BBQ dinner','Dubai Mall & Fountain Show','Gold Souk & Spice Souk tour','Dhow Cruise on Dubai Creek','Palm Jumeirah & Atlantis view','Miracle Garden visit (seasonal)','4-star hotel stay throughout'],itinerary:[{day:'Day 1',title:'Arrival & Dhow Cruise',desc:'Arrive Dubai, hotel check-in. Evening Dubai Creek Dhow Cruise with dinner and entertainment.'},{day:'Day 2',title:'Modern Dubai',desc:'Burj Khalifa At The Top, Dubai Mall, Dubai Fountain show at sunset. Walk through Downtown Dubai.'},{day:'Day 3',title:'Desert Safari',desc:'Morning free for leisure. Afternoon thrilling desert safari — dune bashing, camel ride, belly dance, BBQ dinner under the stars.'},{day:'Day 4',title:'Old Dubai & Shopping',desc:'Gold Souk, Spice Souk, Al Fahidi heritage area, Bastakiya Quarter. Afternoon City Walk or Global Village (seasonal).'},{day:'Day 5',title:'Abu Dhabi Day Trip',desc:'Full day Abu Dhabi — Sheikh Zayed Grand Mosque, Ferrari World or Yas Island (optional).'},{day:'Day 6',title:'Departure',desc:'Morning free for last-minute shopping. Transfer to Dubai International Airport.'}]},
 
-  { id:'bali', name:'Bali Bliss — Island Paradise', dest:'Bali, Indonesia', region:'Asia', category:['International','Honeymoon','Family','Group'], badge:'Trending', price:'₹44,999', priceNum:44999, img:'https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=800&q=80', duration:'6N / 7D', type:'Group & Private', meals:'Daily Breakfast', visa:'On Arrival', desc:'Bali is a magical island of temples, terraced rice fields, dense jungles and pristine beaches. This package covers the best of Ubud\'s culture and Kuta\'s beaches. Ideal for honeymooners, families and first-time international travelers. Vegetarian meal options available at most resorts.', highlights:['Tanah Lot Sunset Temple','Tegalalang Rice Terraces','Uluwatu Cliff Temple & Kecak dance','Seminyak & Kuta Beach','Mount Batur sunrise trek (optional)','Traditional Balinese cooking class','Spa & wellness treatments','Snorkeling at Blue Lagoon'], itinerary:[{day:'Day 1',title:'Arrival Ubud',desc:'Arrive Denpasar, transfer to Ubud. Evening Kecak fire dance at Uluwatu.'},{day:'Day 2',title:'Ubud Culture',desc:'Tegalalang Rice Terraces, Ubud Palace, Monkey Forest, art market.'},{day:'Day 3',title:'Temples & Volcano',desc:'Besakih Mother Temple, Mount Batur viewpoint, Kintamani.'},{day:'Day 4',title:'Move to Seminyak',desc:'Morning cooking class. Afternoon transfer to beach resort.'},{day:'Day 5',title:'Beach & Water Sports',desc:'Seminyak Beach, optional surfing or water sports. Sunset at Tanah Lot Temple.'},{day:'Day 6',title:'Leisure',desc:'Free day — spa, shopping at Seminyak Square or relaxing.'},{day:'Day 7',title:'Departure',desc:'Transfer to airport for departure.'}] },
+  {id:'bali',name:'Bali Bliss — Island Paradise',dest:'Bali, Indonesia',region:'Asia',category:['International','Honeymoon','Family','Group'],badge:'Trending',price:'₹44,999',priceNum:44999,img:'https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=800&q=80',duration:'6N / 7D',type:'Group & Private',meals:'Daily Breakfast',visa:'On Arrival',desc:'Bali is a magical island of temples, terraced rice fields, dense jungles and pristine beaches. This package covers the cultural heart of Ubud and the beach paradise of Seminyak. Ideal for honeymooners, families and first-time international travelers. Vegetarian meal options are available at most resorts.',highlights:['Tanah Lot Sunset Temple','Tegalalang Rice Terraces','Uluwatu Cliff Temple & Kecak Dance','Seminyak & Kuta Beach','Traditional Balinese cooking class','Spa & wellness treatments','Mount Batur sunrise (optional)','Snorkeling at Blue Lagoon'],itinerary:[{day:'Day 1',title:'Arrival in Ubud',desc:'Arrive Denpasar, transfer to Ubud. Evening Kecak fire dance at Uluwatu Temple.'},{day:'Day 2',title:'Ubud Culture',desc:'Tegalalang Rice Terraces, Ubud Royal Palace, Sacred Monkey Forest, art market shopping.'},{day:'Day 3',title:'Temples & Volcano',desc:'Besakih Mother Temple, Mount Batur viewpoint, Kintamani scenic drive.'},{day:'Day 4',title:'Move to Beach Resort',desc:'Morning Balinese cooking class. Afternoon transfer to Seminyak beach resort.'},{day:'Day 5',title:'Beach & Water Sports',desc:'Seminyak Beach, optional surfing or water sports. Evening Tanah Lot sunset temple.'},{day:'Day 6',title:'Leisure Day',desc:'Free day — spa treatments, shopping at Seminyak Square or relaxing at the beach.'},{day:'Day 7',title:'Departure',desc:'Morning breakfast, transfer to Ngurah Rai International Airport.'}]},
 
-  { id:'europe', name:'Best of Europe — 6 Countries', dest:'Europe', region:'Europe', category:['International','Group','Luxury'], badge:'Popular', price:'₹1,19,999', priceNum:119999, img:'https://images.unsplash.com/photo-1505761671935-60b3a7427bad?w=800&q=80', duration:'12N / 13D', type:'Group Tour', meals:'Breakfast & Dinner', visa:'Schengen Required', desc:'See the very best of Europe in one epic journey — Switzerland, France, Italy, Netherlands, Belgium and Germany. This signature group tour with Indian meals covers the most iconic sights of Europe with expert Indian tour managers. Experience the charm of Paris, the Alps of Switzerland, the canals of Amsterdam and the romance of Venice in one unforgettable trip.', highlights:['Eiffel Tower Paris','Swiss Alps & Jungfrau (optional)','Venice gondola ride','Colosseum Rome','Amsterdam canals & Keukenhof','Rhine Valley cruise','Indian meals throughout','Expert Indian Tour Manager'], itinerary:[{day:'Day 1-2',title:'Arrival Zurich → Swiss Alps',desc:'Arrive Zurich. Drive through scenic Swiss Alps, visit Lucerne, Chapel Bridge, Lion Monument.'},{day:'Day 3',title:'Interlaken & Jungfrau',desc:'Optional Jungfrau Top of Europe excursion. Evening in Interlaken.'},{day:'Day 4',title:'Paris',desc:'Travel to Paris. Evening Seine River cruise, Eiffel Tower illuminations.'},{day:'Day 5',title:'Paris Sightseeing',desc:'Louvre Museum, Notre Dame, Champs-Élysées, Arc de Triomphe.'},{day:'Day 6-7',title:'Netherlands & Belgium',desc:'Amsterdam canal cruise, Keukenhof Gardens, Bruges medieval city tour.'},{day:'Day 8',title:'Germany',desc:'Rhine Valley, Cologne Cathedral, drive to Austria.'},{day:'Day 9-10',title:'Italy — Venice & Rome',desc:'Venice gondola, St. Mark\'s Square. Fly to Rome — Colosseum, Vatican, Trevi Fountain.'},{day:'Day 11-12',title:'Florence & Departure',desc:'Florence Duomo, Uffizi Gallery. Return flight home.'}] },
+  {id:'europe',name:'Best of Europe — 6 Countries',dest:'Europe',region:'Europe',category:['International','Group','Luxury'],badge:'Popular',price:'₹1,19,999',priceNum:119999,img:'https://images.unsplash.com/photo-1505761671935-60b3a7427bad?w=800&q=80',duration:'12N / 13D',type:'Group Tour',meals:'Breakfast & Dinner',visa:'Schengen Required',desc:'See the very best of Europe in one epic journey — Switzerland, France, Italy, Netherlands, Belgium and Germany. This signature group tour with Indian meals covers the most iconic sights of Europe with expert Indian tour managers. Experience the charm of Paris, the Alps of Switzerland, the canals of Amsterdam and the romance of Venice all in one unforgettable trip.',highlights:['Eiffel Tower Paris — day & night','Swiss Alps & Lucerne Chapel Bridge','Venice gondola ride','Colosseum & Vatican Rome','Amsterdam canals & Keukenhof Gardens','Rhine Valley scenic cruise','Indian meals throughout the tour','Expert Indian Tour Manager'],itinerary:[{day:'Day 1-2',title:'Arrival Zurich & Swiss Alps',desc:'Arrive Zurich. Drive through scenic Swiss Alps, visit Lucerne, Chapel Bridge, Lion Monument.'},{day:'Day 3',title:'Interlaken & Jungfrau',desc:'Optional Jungfrau Top of Europe excursion. Free time in Interlaken for leisure.'},{day:'Day 4',title:'Paris',desc:'Travel to Paris. Evening Seine River cruise, Eiffel Tower illumination experience.'},{day:'Day 5',title:'Paris Sightseeing',desc:'Louvre Museum, Notre Dame, Champs-Élysées, Arc de Triomphe.'},{day:'Day 6-7',title:'Netherlands & Belgium',desc:'Amsterdam canal cruise, Keukenhof Gardens. Bruges medieval city walking tour.'},{day:'Day 8',title:'Germany — Rhine Valley',desc:'Rhine Valley cruise, Cologne Cathedral, drive through to Austria.'},{day:'Day 9-10',title:'Italy — Venice & Rome',desc:'Venice gondola ride, St. Mark\'s Square. Fly to Rome — Colosseum, Vatican, Trevi Fountain.'},{day:'Day 11-12',title:'Florence & Departure',desc:'Florence Duomo, Uffizi Gallery, Ponte Vecchio. Return flight home.'}]},
 
-  { id:'maldives', name:'Maldives Overwater Villa', dest:'Maldives', region:'Asia', category:['International','Honeymoon','Luxury'], badge:'Luxury', price:'₹79,999', priceNum:79999, img:'https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=800&q=80', duration:'5N / 6D', type:'Couple & Private', meals:'Full Board', visa:'On Arrival', desc:'Experience the ultimate luxury in crystal-clear turquoise waters of the Maldives. Stay in a stunning overwater villa or beach bungalow with direct lagoon access. Snorkel among vibrant coral reefs, enjoy sunset dolphin cruises, and indulge in world-class cuisine. The Maldives is the ultimate honeymoon and luxury escape — and we make it accessible for Indian couples.', highlights:['Overwater villa or beach bungalow','Private beach access','Snorkeling & coral reef exploration','Sunset dolphin cruise','Underwater restaurant dining','Couple spa treatment','Glass-bottom boat tour','All meals included (breakfast, lunch, dinner)'], itinerary:[{day:'Day 1',title:'Arrival & Speedboat Transfer',desc:'Arrive Malé, speedboat or seaplane transfer to resort. Settle into your overwater villa.'},{day:'Day 2',title:'Water Sports & Snorkeling',desc:'Morning snorkeling at house reef. Afternoon kayaking or paddleboarding. Sunset cruise.'},{day:'Day 3',title:'Island Hopping',desc:'Visit local Maldivian island, fish market, and sandbank picnic.'},{day:'Day 4',title:'Leisure & Spa',desc:'Full day at leisure. Recommended: couple spa and underwater dining experience.'},{day:'Day 5',title:'Dolphin Cruise & Beach',desc:'Morning dolphin cruise. Afternoon free on private beach.'},{day:'Day 6',title:'Departure',desc:'Morning swim, check-out, speedboat back to Malé for departure.'}] },
+  {id:'maldives',name:'Maldives Overwater Villa',dest:'Maldives',region:'Asia',category:['International','Honeymoon','Luxury'],badge:'Luxury',price:'₹79,999',priceNum:79999,img:'https://images.unsplash.com/photo-1573843981267-be1999ff37cd?w=800&q=80',duration:'5N / 6D',type:'Couple & Private',meals:'Full Board',visa:'On Arrival',desc:'Experience the ultimate luxury in the crystal-clear turquoise waters of the Maldives. Stay in a stunning overwater villa or beach bungalow with direct lagoon access. Snorkel among vibrant coral reefs, enjoy sunset dolphin cruises, and indulge in world-class cuisine. The Maldives is the ultimate honeymoon and luxury escape — and we make it truly accessible for Indian couples.',highlights:['Overwater villa or beach bungalow','Private beach & lagoon access','Snorkeling at house reef','Sunset dolphin cruise','Underwater restaurant dining','Couple spa treatment included','Glass-bottom boat tour','All meals included (full board)'],itinerary:[{day:'Day 1',title:'Arrival & Speedboat Transfer',desc:'Arrive Malé International Airport, speedboat or seaplane transfer to resort. Settle into your overwater villa.'},{day:'Day 2',title:'Water Sports & Snorkeling',desc:'Morning snorkeling at house reef. Afternoon kayaking or paddleboarding. Sunset dolphin cruise.'},{day:'Day 3',title:'Island Hopping',desc:'Visit a local Maldivian island, fish market, and a beautiful sandbank picnic.'},{day:'Day 4',title:'Leisure & Spa',desc:'Full day at leisure. Recommended: couple spa and the signature underwater dining experience.'},{day:'Day 5',title:'Dolphin Cruise & Beach',desc:'Morning dolphin cruise. Afternoon free on private beach, snorkeling at coral garden.'},{day:'Day 6',title:'Departure',desc:'Morning swim, check-out. Speedboat transfer back to Malé for international departure.'}]},
 
-  { id:'japan', name:'Japan Cultural Explorer', dest:'Japan', region:'Asia', category:['International','Group','Luxury'], badge:'Premium', price:'₹1,09,999', priceNum:109999, img:'https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=800&q=80', duration:'8N / 9D', type:'Group Tour', meals:'Daily Breakfast', visa:'Required', desc:'Japan is unlike anywhere else on earth — a perfect harmony of ancient tradition and cutting-edge modernity. This carefully crafted tour covers Tokyo, Osaka, Kyoto and Hiroshima. Experience iconic temples, bullet trains, cherry blossoms, authentic Japanese cuisine and the neon-lit streets of Shibuya. Our expert tour managers ensure a comfortable experience even with language differences.', highlights:['Iconic Shibuya Crossing','Fushimi Inari thousand torii gates','Hiroshima Peace Memorial','Bullet train (Shinkansen) experience','Mount Fuji viewpoint','Nara deer park','Traditional Kyoto temples & geisha district','Tokyo Disneyland (optional)'], itinerary:[{day:'Day 1-2',title:'Tokyo',desc:'Arrive Tokyo. Shibuya Crossing, Harajuku, Meiji Shrine. Day 2: Akihabara, TeamLab digital art, Odaiba.'},{day:'Day 3',title:'Mount Fuji',desc:'Day trip to Fuji Five Lakes, Hakone, iconic Fuji viewpoint.'},{day:'Day 4',title:'Kyoto',desc:'Bullet train to Kyoto. Fushimi Inari, Arashiyama Bamboo Grove, Gion geisha district.'},{day:'Day 5',title:'Kyoto Temples',desc:'Kinkakuji Golden Pavilion, Nijo Castle, Philosopher\'s Path.'},{day:'Day 6',title:'Nara & Osaka',desc:'Nara deer park, Todaiji temple. Evening arrive Osaka.'},{day:'Day 7',title:'Osaka',desc:'Dotonbori, Osaka Castle, street food tour.'},{day:'Day 8',title:'Hiroshima',desc:'Hiroshima Peace Memorial Museum and Park. Miyajima Island floating torii.'},{day:'Day 9',title:'Departure',desc:'Transfer to airport, return home.'}] },
+  {id:'japan',name:'Japan Cultural Explorer',dest:'Japan',region:'Asia',category:['International','Group','Luxury'],badge:'Premium',price:'₹1,09,999',priceNum:109999,img:'https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=800&q=80',duration:'8N / 9D',type:'Group Tour',meals:'Daily Breakfast',visa:'Required',desc:'Japan is unlike anywhere else on earth — a perfect harmony of ancient tradition and cutting-edge modernity. This carefully crafted tour covers Tokyo, Osaka, Kyoto and Hiroshima. Experience iconic temples, bullet trains, cherry blossoms, and the neon-lit streets of Shibuya. Our expert tour managers ensure a comfortable experience despite the language barrier.',highlights:['Iconic Shibuya Crossing Tokyo','Fushimi Inari thousand torii gates','Hiroshima Peace Memorial Park','Bullet train (Shinkansen) experience','Mount Fuji iconic viewpoint','Nara deer park & Todaiji temple','Traditional Kyoto geisha district','Tokyo Disneyland (optional add-on)'],itinerary:[{day:'Day 1-2',title:'Tokyo',desc:'Arrive Tokyo. Shibuya Crossing, Harajuku, Meiji Shrine. Day 2: Akihabara, TeamLab digital art museum, Odaiba waterfront.'},{day:'Day 3',title:'Mount Fuji',desc:'Day trip to Fuji Five Lakes, Hakone rope way, iconic Fuji viewpoint.'},{day:'Day 4',title:'Kyoto',desc:'Shinkansen to Kyoto. Fushimi Inari Gates, Arashiyama Bamboo Grove, Gion geisha district evening.'},{day:'Day 5',title:'Kyoto Temples',desc:'Kinkakuji Golden Pavilion, Nijo Castle, Philosopher\'s Path morning walk.'},{day:'Day 6',title:'Nara & Osaka',desc:'Nara deer park, Todaiji temple. Evening arrive Osaka.'},{day:'Day 7',title:'Osaka City',desc:'Dotonbori food street, Osaka Castle, street food tour.'},{day:'Day 8',title:'Hiroshima & Miyajima',desc:'Hiroshima Peace Memorial Museum. Miyajima Island floating torii gate.'},{day:'Day 9',title:'Departure',desc:'Transfer to airport, return home with beautiful memories.'}]},
 
-  { id:'thailand', name:'Thailand Island Hopping', dest:'Thailand', region:'Asia', category:['International','Group','Honeymoon','Short'], badge:'Value Deal', price:'₹34,999', priceNum:34999, img:'https://images.unsplash.com/photo-1512100356356-de1b84283e18?w=800&q=80', duration:'5N / 6D', type:'Group & Couple', meals:'Daily Breakfast', visa:'On Arrival', desc:'Thailand is Southeast Asia\'s crown jewel — stunning islands, turquoise beaches, ornate Buddhist temples and incredible street food. This package covers Bangkok\'s iconic temples and the beautiful islands of Phuket or Krabi. Affordable, vibrant and full of life — Thailand is perfect for first-time international travelers.', highlights:['Grand Palace & Emerald Buddha Bangkok','Phi Phi Islands boat tour','Maya Bay snorkeling','Elephant sanctuary visit','Floating market tour','Phuket or Krabi beach stay','Patong Beach sunset','Street food tour'], itinerary:[{day:'Day 1-2',title:'Bangkok',desc:'Arrive Bangkok. Grand Palace, Wat Arun temple, Chao Phraya river cruise. Day 2: Chatuchak market, floating market.'},{day:'Day 3',title:'Fly to Phuket',desc:'Fly to Phuket. Afternoon Patong Beach. Evening Bangla Road.'},{day:'Day 4',title:'Phi Phi Islands',desc:'Full day speedboat tour — Phi Phi Don, Phi Phi Leh, Maya Bay, Viking Cave, snorkeling.'},{day:'Day 5',title:'Elephant & Leisure',desc:'Morning ethical elephant sanctuary. Afternoon beach leisure.'},{day:'Day 6',title:'Departure',desc:'Transfer to Phuket airport for return flight.'}] },
+  {id:'thailand',name:'Thailand Island Hopping',dest:'Thailand',region:'Asia',category:['International','Group','Honeymoon','Short'],badge:'Value Deal',price:'₹34,999',priceNum:34999,img:'https://images.unsplash.com/photo-1512100356356-de1b84283e18?w=800&q=80',duration:'5N / 6D',type:'Group & Couple',meals:'Daily Breakfast',visa:'On Arrival',desc:'Thailand is Southeast Asia\'s crown jewel — stunning islands, turquoise beaches, ornate Buddhist temples and incredible street food. This package covers Bangkok\'s iconic temples and the beautiful islands of Phuket or Krabi. Affordable, vibrant and full of life — perfect for first-time international travelers from India.',highlights:['Grand Palace & Emerald Buddha Bangkok','Phi Phi Islands speedboat tour','Maya Bay snorkeling','Ethical elephant sanctuary visit','Floating market tour','Phuket or Krabi beach resort stay','Patong Beach sunset walk','Bangkok street food experience'],itinerary:[{day:'Day 1-2',title:'Bangkok',desc:'Arrive Bangkok. Grand Palace, Wat Arun temple, Chao Phraya river cruise. Day 2: Chatuchak weekend market, Damnoen Saduak floating market.'},{day:'Day 3',title:'Fly to Phuket',desc:'Fly to Phuket. Afternoon Patong Beach, evening Bangla Road walking street.'},{day:'Day 4',title:'Phi Phi Islands',desc:'Full day speedboat island tour — Phi Phi Don, Phi Phi Leh, Maya Bay, Viking Cave, snorkeling stops.'},{day:'Day 5',title:'Elephant Sanctuary & Leisure',desc:'Morning at ethical elephant sanctuary. Afternoon beach leisure, optional water sports.'},{day:'Day 6',title:'Departure',desc:'Morning free. Transfer to Phuket airport for return flight to India.'}]},
 
-  { id:'singapore', name:'Singapore & Malaysia Combo', dest:'Singapore & Malaysia', region:'Asia', category:['International','Family','Group'], badge:'Popular', price:'₹54,999', priceNum:54999, img:'https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=800&q=80', duration:'6N / 7D', type:'Group & Family', meals:'Daily Breakfast', visa:'Required', desc:'Two spectacular countries in one smooth holiday — Singapore\'s futuristic skyline and Malaysia\'s tropical diversity. Start with iconic Gardens by the Bay and Universal Studios in Singapore, then cross to Kuala Lumpur for the Petronas Towers and Genting Highlands. A perfect family holiday with a great mix of city excitement and nature.', highlights:['Gardens by the Bay & Supertrees','Universal Studios Singapore','Sentosa Island & beaches','Petronas Twin Towers KL','Genting Highlands day trip','Batu Caves Kuala Lumpur','Little India & Chinatown Singapore','Cable car & night safari'], itinerary:[{day:'Day 1-3',title:'Singapore',desc:'Arrive Singapore. Marina Bay Sands, Gardens by the Bay. Day 2: Universal Studios, Sentosa. Day 3: Little India, Chinatown, Night Safari.'},{day:'Day 4',title:'KL by Train',desc:'Take scenic train to Kuala Lumpur. Petronas Towers, KL Tower, Bukit Bintang.'},{day:'Day 5',title:'Genting & Batu Caves',desc:'Morning Batu Caves. Afternoon Genting Highlands cable car.'},{day:'Day 6',title:'Shopping & Departure Prep',desc:'Pavilion Mall shopping, Central Market. Evening free.'},{day:'Day 7',title:'Departure',desc:'Transfer to KL airport for return flight.'}] },
+  {id:'singapore',name:'Singapore & Malaysia Combo',dest:'Singapore & Malaysia',region:'Asia',category:['International','Family','Group'],badge:'Popular',price:'₹54,999',priceNum:54999,img:'https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=800&q=80',duration:'6N / 7D',type:'Group & Family',meals:'Daily Breakfast',visa:'Required',desc:'Two spectacular countries in one smooth holiday — Singapore\'s futuristic skyline and Malaysia\'s tropical diversity. Start with iconic Gardens by the Bay and Universal Studios in Singapore, then cross to Kuala Lumpur for the Petronas Towers and Genting Highlands. A perfect family holiday with a great mix of city excitement and natural beauty.',highlights:['Gardens by the Bay & Supertree Grove','Universal Studios Singapore','Sentosa Island & cable car','Petronas Twin Towers KL','Genting Highlands day trip','Batu Caves Kuala Lumpur','Little India & Chinatown Singapore','Singapore Night Safari'],itinerary:[{day:'Day 1-3',title:'Singapore',desc:'Arrive Singapore. Marina Bay Sands, Gardens by the Bay light show. Day 2: Universal Studios, Sentosa beaches. Day 3: Little India, Chinatown, Night Safari.'},{day:'Day 4',title:'Train to KL',desc:'Scenic train to Kuala Lumpur. Petronas Towers sky bridge, KL Tower, Bukit Bintang food street.'},{day:'Day 5',title:'Genting & Batu Caves',desc:'Morning Batu Caves Hindu temple. Afternoon Genting Highlands cable car and theme park.'},{day:'Day 6',title:'Shopping Day',desc:'Pavilion Mall, Central Market handicrafts shopping. Evening free.'},{day:'Day 7',title:'Departure',desc:'Transfer to KLIA for return flight to India.'}]},
 
-  { id:'kashmir', name:'Kashmir — Paradise on Earth', dest:'Kashmir, India', region:'India', category:['India','Group','Family','Honeymoon'], badge:'New', price:'₹24,999', priceNum:24999, img:'https://images.unsplash.com/photo-1566837945700-30057527ade0?w=800&q=80', duration:'5N / 6D', type:'Group & Private', meals:'Breakfast & Dinner', visa:'Not Required', desc:'Kashmir is often called Paradise on Earth — and rightly so. Snow-capped Himalayan peaks, serene Dal Lake, blooming Mughal gardens, and the charming hill town of Gulmarg make Kashmir one of India\'s most breathtaking destinations. This all-inclusive package covers Srinagar, Gulmarg and Pahalgam — the three jewels of the valley.', highlights:['Shikara ride on Dal Lake','Houseboat stay experience','Gulmarg Gondola cable car','Pahalgam Betaab Valley','Mughal Gardens — Shalimar & Nishat','Sonmarg day trip','Local Kashmiri cuisine & wazwan','Snow activities (seasonal)'], itinerary:[{day:'Day 1',title:'Arrive Srinagar',desc:'Arrive Srinagar airport. Shikara ride on Dal Lake. Overnight houseboat.'},{day:'Day 2',title:'Srinagar Sightseeing',desc:'Mughal Gardens — Shalimar Bagh, Nishat Bagh, Chashme Shahi. Shankaracharya Temple. Local bazaar.'},{day:'Day 3',title:'Gulmarg',desc:'Full day Gulmarg — Gondola Phase 1 & 2, snow activities, meadow walks. Return Srinagar.'},{day:'Day 4',title:'Pahalgam',desc:'Drive to Pahalgam valley — Betaab Valley, Aru Valley, Chandanwari. Return evening.'},{day:'Day 5',title:'Sonmarg Day Trip',desc:'Scenic drive to Sonmarg — thajiwas glacier by pony ride.'},{day:'Day 6',title:'Departure',desc:'Morning local market shopping. Transfer to Srinagar airport.'}] },
+  {id:'kashmir',name:'Kashmir — Paradise on Earth',dest:'Kashmir, India',region:'India',category:['India','Group','Family','Honeymoon'],badge:'New',price:'₹24,999',priceNum:24999,img:'https://images.unsplash.com/photo-1609766418204-66fe3543c100?w=800&q=80',duration:'5N / 6D',type:'Group & Private',meals:'Breakfast & Dinner',visa:'Not Required',desc:'Kashmir is often called Paradise on Earth — and rightly so. Snow-capped Himalayan peaks, the serene Dal Lake, blooming Mughal gardens, and the charming hill towns of Gulmarg and Pahalgam make Kashmir one of India\'s most breathtaking destinations. This all-inclusive package covers Srinagar, Gulmarg and Pahalgam — the three jewels of the valley.',highlights:['Shikara ride on Dal Lake at sunrise','Traditional houseboat stay','Gulmarg Gondola cable car ride','Pahalgam Betaab Valley visit','Mughal Gardens — Shalimar & Nishat','Sonmarg glacier day trip','Authentic Kashmiri wazwan cuisine','Snow activities in season'],itinerary:[{day:'Day 1',title:'Arrive Srinagar',desc:'Arrive Srinagar airport. Traditional shikara ride on Dal Lake. Overnight on deluxe houseboat.'},{day:'Day 2',title:'Srinagar City',desc:'Mughal Gardens — Shalimar Bagh, Nishat Bagh, Chashme Shahi. Shankaracharya Temple. Local bazaar shopping.'},{day:'Day 3',title:'Gulmarg',desc:'Full day Gulmarg — Gondola Phase 1 & 2 (highest cable car in Asia), snow activities, meadow walks.'},{day:'Day 4',title:'Pahalgam',desc:'Scenic drive to Pahalgam — Betaab Valley, Aru Valley, Chandanwari. Return by evening.'},{day:'Day 5',title:'Sonmarg',desc:'Scenic drive to Sonmarg — Thajiwas Glacier by pony ride (optional), river views.'},{day:'Day 6',title:'Departure',desc:'Morning local market shopping for Kashmiri handicrafts. Transfer to Srinagar airport.'}]},
 
-  { id:'kerala', name:'Kerala — God\'s Own Country', dest:'Kerala, India', region:'India', category:['India','Family','Honeymoon','Short'], badge:'Serene', price:'₹18,999', priceNum:18999, img:'https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=800&q=80', duration:'5N / 6D', type:'Group & Private', meals:'Daily Breakfast', visa:'Not Required', desc:'Kerala is India\'s most scenic coastal state — blessed with serene backwaters, lush hill stations, spice gardens, and pristine beaches. This package covers the iconic Alleppey backwaters on a houseboat, the cool tea gardens of Munnar, and the beaches of Kovalam. Kerala is perfect for nature lovers, ayurveda seekers, and anyone who wants to slow down and breathe.', highlights:['Alleppey backwater houseboat stay','Munnar tea gardens & viewpoints','Periyar Wildlife Sanctuary','Kovalam or Varkala Beach','Kathakali cultural performance','Ayurvedic massage & wellness','Spice plantation tour','Kochi Fort & Chinese fishing nets'], itinerary:[{day:'Day 1',title:'Arrive Cochin',desc:'Arrive Kochi. Fort Kochi, Chinese fishing nets, Dutch Palace, Jewish Synagogue. Kathakali dance show.'},{day:'Day 2',title:'Munnar',desc:'Drive to Munnar — tea museum, Eravikulam National Park, Echo Point, viewpoints.'},{day:'Day 3',title:'Thekkady',desc:'Periyar Wildlife Sanctuary boat ride. Spice plantation tour. Bamboo rafting.'},{day:'Day 4',title:'Alleppey Houseboat',desc:'Check into houseboat. Cruise through coconut-lined backwaters. Sunset on the lake.'},{day:'Day 5',title:'Kovalam Beach',desc:'Drive to Kovalam. Beach, lighthouse, ayurvedic massage.'},{day:'Day 6',title:'Departure',desc:'Trivandrum airport departure.'}] },
+  {id:'kerala',name:"Kerala — God's Own Country",dest:'Kerala, India',region:'India',category:['India','Family','Honeymoon','Short'],badge:'Serene',price:'₹18,999',priceNum:18999,img:'https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=800&q=80',duration:'5N / 6D',type:'Group & Private',meals:'Daily Breakfast',visa:'Not Required',desc:"Kerala is India's most scenic coastal state — blessed with serene backwaters, lush hill stations, spice gardens and pristine beaches. This package covers the iconic Alleppey backwaters on a houseboat, the cool tea gardens of Munnar, and the beaches of Kovalam. Kerala is perfect for nature lovers, ayurveda seekers, and honeymooners.",highlights:['Alleppey backwater houseboat stay','Munnar tea gardens & viewpoints','Periyar Wildlife Sanctuary boat','Kovalam or Varkala Beach','Kathakali cultural performance','Ayurvedic massage & wellness','Spice plantation guided tour','Kochi Fort & Chinese fishing nets'],itinerary:[{day:'Day 1',title:'Arrive Kochi',desc:'Arrive Kochi. Fort Kochi, Chinese fishing nets, Dutch Palace, Jewish Synagogue. Evening Kathakali dance show.'},{day:'Day 2',title:'Munnar',desc:'Drive to Munnar — tea museum, Eravikulam National Park, Echo Point, scenic viewpoints.'},{day:'Day 3',title:'Thekkady',desc:'Periyar Wildlife Sanctuary boat ride. Spice plantation tour. Optional bamboo rafting.'},{day:'Day 4',title:'Alleppey Houseboat',desc:'Check into rice boat houseboat. Cruise through coconut-lined backwaters. Sunset on the lake.'},{day:'Day 5',title:'Kovalam Beach',desc:'Drive to Kovalam. Beach, lighthouse walk, traditional ayurvedic massage.'},{day:'Day 6',title:'Departure',desc:'Transfer to Trivandrum international airport for departure.'}]},
 
-  { id:'australia', name:'Australia & New Zealand', dest:'Australia & NZ', region:'Australia', category:['International','Luxury','Group'], badge:'Premium', price:'₹1,49,999', priceNum:149999, img:'https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?w=800&q=80', duration:'12N / 13D', type:'Group Tour', meals:'Daily Breakfast', visa:'Required', desc:'Australia and New Zealand together offer one of the world\'s most diverse travel experiences — from the Sydney Opera House to Queenstown\'s adventure capital. This epic journey combines Australia\'s iconic cities and the Great Barrier Reef with New Zealand\'s staggering Fiordland landscapes and Maori culture.', highlights:['Sydney Opera House & Harbour Bridge','Great Barrier Reef snorkeling','Cairns rainforest','Melbourne city & laneways','Queenstown adventure hub','Milford Sound cruise NZ','Hobbiton movie set','Maori cultural experience'], itinerary:[{day:'Day 1-3',title:'Sydney',desc:'Arrive Sydney. Opera House, Harbour Bridge climb, Bondi Beach, Blue Mountains day trip.'},{day:'Day 4-5',title:'Cairns',desc:'Fly to Cairns. Great Barrier Reef snorkeling, Kuranda rainforest railway.'},{day:'Day 6',title:'Melbourne',desc:'Fly Melbourne. Federation Square, laneways, St. Kilda beach.'},{day:'Day 7-8',title:'New Zealand — Queenstown',desc:'Fly Queenstown. Bungy jumping (optional), Milford Sound cruise, Fiordland.'},{day:'Day 9-10',title:'Rotorua & Auckland',desc:'Hobbiton movie set, Maori hangi dinner, geothermal hot springs.'},{day:'Day 11-12',title:'Auckland',desc:'Sky Tower, Waiheke Island wine tour. Departure.'}] },
+  {id:'australia',name:'Australia & New Zealand',dest:'Australia & NZ',region:'Australia',category:['International','Luxury','Group'],badge:'Premium',price:'₹1,49,999',priceNum:149999,img:'https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?w=800&q=80',duration:'12N / 13D',type:'Group Tour',meals:'Daily Breakfast',visa:'Required',desc:'Australia and New Zealand together offer one of the world\'s most diverse travel experiences — from the Sydney Opera House to Queenstown\'s adventure capital. This epic journey combines Australia\'s iconic cities and the Great Barrier Reef with New Zealand\'s staggering Fiordland landscapes and Maori culture.',highlights:['Sydney Opera House & Harbour Bridge','Great Barrier Reef snorkeling Cairns','Melbourne city & hidden laneways','Queenstown adventure capital','Milford Sound cruise New Zealand','Hobbiton Lord of the Rings movie set','Maori hangi cultural experience','Rotorua geothermal hot springs'],itinerary:[{day:'Day 1-3',title:'Sydney',desc:'Arrive Sydney. Opera House, Harbour Bridge climb, Bondi Beach. Day 3 Blue Mountains day trip.'},{day:'Day 4-5',title:'Cairns',desc:'Fly to Cairns. Great Barrier Reef snorkeling, Kuranda rainforest scenic railway.'},{day:'Day 6',title:'Melbourne',desc:'Fly Melbourne. Federation Square, hidden laneways, St. Kilda beach.'},{day:'Day 7-8',title:'Queenstown NZ',desc:'Fly Queenstown. Milford Sound cruise, Fiordland National Park. Optional bungy jump.'},{day:'Day 9-10',title:'Rotorua',desc:'Hobbiton movie set tour, Maori hangi dinner, geothermal hot springs.'},{day:'Day 11-12',title:'Auckland & Departure',desc:'Auckland Sky Tower, Waiheke Island wine tour. Departure from Auckland.'}]},
 
-  { id:'usa', name:'USA Coast to Coast', dest:'USA', region:'Americas', category:['International','Luxury','Group'], badge:'Epic', price:'₹1,29,999', priceNum:129999, img:'https://images.unsplash.com/photo-1485738422979-f5c462d49f74?w=800&q=80', duration:'10N / 11D', type:'Group Tour', meals:'Daily Breakfast', visa:'Required', desc:'Experience the incredible diversity of America — from the dazzling lights of New York City to the grandeur of the Grand Canyon, Hollywood glamour of Los Angeles, and the entertainment capital of Las Vegas. This signature USA tour is designed for Indian travelers with vegetarian meal options and expert Indian tour management throughout.', highlights:['New York — Times Square & Statue of Liberty','Niagara Falls','Washington DC landmarks','Grand Canyon National Park','Las Vegas Strip','Hollywood & Beverly Hills','Golden Gate Bridge San Francisco','Universal Studios LA'], itinerary:[{day:'Day 1-3',title:'New York',desc:'Arrive JFK. Times Square, Statue of Liberty, Empire State Building, Central Park. Day 3 Niagara Falls day trip.'},{day:'Day 4',title:'Washington DC',desc:'Capitol Hill, Lincoln Memorial, Smithsonian museums.'},{day:'Day 5-6',title:'Las Vegas',desc:'Fly to Vegas. Strip hotels, Fremont Street, helicopter Grand Canyon tour.'},{day:'Day 7',title:'Los Angeles',desc:'Drive or fly to LA. Hollywood sign, Walk of Fame, Beverly Hills.'},{day:'Day 8-9',title:'San Francisco',desc:'Golden Gate Bridge, Alcatraz, Fisherman\'s Wharf, cable cars.'},{day:'Day 10',title:'Shopping & Departure',desc:'Final shopping at premium outlets. Transfer to airport.'}] },
+  {id:'usa',name:'USA Coast to Coast',dest:'USA',region:'Americas',category:['International','Luxury','Group'],badge:'Epic',price:'₹1,29,999',priceNum:129999,img:'https://images.unsplash.com/photo-1485738422979-f5c462d49f74?w=800&q=80',duration:'10N / 11D',type:'Group Tour',meals:'Daily Breakfast',visa:'Required',desc:'Experience the incredible diversity of America — from the dazzling lights of New York City to the grandeur of the Grand Canyon, Hollywood glamour of Los Angeles, and the entertainment capital of Las Vegas. This signature USA tour is designed for Indian travelers with vegetarian meal options and expert Indian tour management.',highlights:['Times Square & Statue of Liberty NY','Niagara Falls boat ride','Washington DC monuments & museums','Grand Canyon helicopter tour','Las Vegas Strip & shows','Hollywood Walk of Fame LA','Golden Gate Bridge San Francisco','Universal Studios Los Angeles'],itinerary:[{day:'Day 1-3',title:'New York',desc:'Arrive JFK. Times Square, Statue of Liberty, Empire State Building, Central Park. Day 3: Niagara Falls day trip.'},{day:'Day 4',title:'Washington DC',desc:'Capitol Hill, Lincoln Memorial, Smithsonian museums, White House exterior.'},{day:'Day 5-6',title:'Las Vegas',desc:'Fly to Vegas. Strip hotels, Fremont Street experience, Grand Canyon helicopter tour.'},{day:'Day 7',title:'Los Angeles',desc:'Hollywood sign hike, Walk of Fame, Beverly Hills drive, Sunset Boulevard.'},{day:'Day 8-9',title:'San Francisco',desc:'Golden Gate Bridge, Alcatraz Island, Fisherman\'s Wharf, cable car ride.'},{day:'Day 10',title:'Shopping & Departure',desc:'Premium outlet shopping. Transfer to airport for return flight.'}]},
 
-  { id:'egypt', name:'Egypt — Land of Pharaohs', dest:'Egypt', region:'Africa', category:['International','Group','Luxury'], badge:'Exotic', price:'₹74,999', priceNum:74999, img:'https://images.unsplash.com/photo-1539650116574-75c0c6d73f6e?w=800&q=80', duration:'7N / 8D', type:'Group Tour', meals:'Breakfast & Dinner', visa:'On Arrival', desc:'Egypt is one of the world\'s oldest and most fascinating civilizations. Walk in the footsteps of the pharaohs at the Great Pyramids of Giza, cruise the legendary Nile River, explore the Valley of the Kings at Luxor, and relax on the Red Sea shores of Hurghada. This comprehensive package brings ancient history alive with expert Egyptologist guides.', highlights:['Great Pyramids of Giza & Sphinx','Nile River cruise Luxor-Aswan','Valley of the Kings','Karnak & Luxor Temples','Egyptian Museum Cairo','Khan el-Khalili Bazaar','Abu Simbel temples (optional)','Red Sea snorkeling Hurghada'], itinerary:[{day:'Day 1-2',title:'Cairo',desc:'Arrive Cairo. Pyramids of Giza, Great Sphinx, Memphis. Day 2: Egyptian Museum, Khan el-Khalili.'},{day:'Day 3',title:'Fly to Luxor',desc:'Fly Luxor. Valley of the Kings, Hatshepsut Temple, Colossi of Memnon.'},{day:'Day 4',title:'Luxor East Bank',desc:'Karnak Temple, Luxor Temple at sunset. Board Nile cruise ship.'},{day:'Day 5',title:'Nile Cruise',desc:'Cruise Nile — Edfu, Kom Ombo temples on board. Sunset from deck.'},{day:'Day 6',title:'Aswan',desc:'Arrive Aswan. Philae Temple, High Dam, Nubian village.'},{day:'Day 7',title:'Hurghada',desc:'Transfer to Red Sea resort. Beach, snorkeling, relaxation.'},{day:'Day 8',title:'Departure',desc:'Return Cairo, international departure.'}] },
+  {id:'egypt',name:'Egypt — Land of Pharaohs',dest:'Egypt',region:'Africa',category:['International','Group','Luxury'],badge:'Exotic',price:'₹74,999',priceNum:74999,img:'https://images.unsplash.com/photo-1568322445389-f64ac2515020?w=800&q=80',duration:'7N / 8D',type:'Group Tour',meals:'Breakfast & Dinner',visa:'On Arrival',desc:'Egypt is one of the world\'s oldest and most fascinating civilizations. Walk in the footsteps of the pharaohs at the Great Pyramids of Giza, cruise the legendary Nile River, explore the Valley of the Kings at Luxor, and relax on the Red Sea shores of Hurghada. This comprehensive package brings ancient history alive with expert Egyptologist guides.',highlights:['Great Pyramids of Giza & Great Sphinx','Nile River cruise Luxor to Aswan','Valley of the Kings royal tombs','Karnak & Luxor Temples at sunset','Egyptian Museum Cairo mummies','Khan el-Khalili historic bazaar','Abu Simbel rock temples (optional)','Red Sea snorkeling in Hurghada'],itinerary:[{day:'Day 1-2',title:'Cairo',desc:'Arrive Cairo. Pyramids of Giza, Great Sphinx, Memphis ancient city. Day 2: Egyptian Museum, Khan el-Khalili bazaar.'},{day:'Day 3',title:'Fly to Luxor',desc:'Fly to Luxor. Valley of the Kings, Hatshepsut Temple, Colossi of Memnon.'},{day:'Day 4',title:'Luxor East Bank',desc:'Karnak Temple complex, Luxor Temple at sunset. Board Nile cruise ship.'},{day:'Day 5',title:'Nile Cruise',desc:'Cruise the Nile — Edfu and Kom Ombo temples. Sunset from the deck.'},{day:'Day 6',title:'Aswan',desc:'Arrive Aswan. Philae Temple, Aswan High Dam, Nubian village boat trip.'},{day:'Day 7',title:'Hurghada Red Sea',desc:'Transfer to Hurghada Red Sea resort. Beach, snorkeling, relaxation.'},{day:'Day 8',title:'Departure',desc:'Return to Cairo for international departure flight.'}]},
 
-  { id:'goa', name:'Goa Beach Holiday', dest:'Goa, India', region:'India', category:['India','Short','Group','Family'], badge:'Fun', price:'₹12,999', priceNum:12999, img:'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?w=800&q=80', duration:'3N / 4D', type:'Group & Private', meals:'Daily Breakfast', visa:'Not Required', desc:'Goa — India\'s beach paradise. Sun, sea, stunning Portuguese heritage churches, vibrant markets and incredible seafood. Whether you want to party at Baga or relax at Palolem\'s quiet shores, Goa has something for everyone. This quick getaway from Ahmedabad is perfect for long weekends and short breaks.', highlights:['Baga & Calangute Beach','Water sports — parasailing, jet ski','Old Goa Portuguese churches','Anjuna flea market','Sunset cruise on Mandovi river','Casino cruise (optional)','Local Goan cuisine','Dudhsagar Waterfalls trip'], itinerary:[{day:'Day 1',title:'Arrive North Goa',desc:'Arrive Goa. Check in. Baga Beach, Calangute. Evening Anjuna market.'},{day:'Day 2',title:'Water Sports & Heritage',desc:'Morning water sports. Old Goa churches — Basilica of Bom Jesus. Sunset Mandovi cruise.'},{day:'Day 3',title:'South Goa & Dudhsagar',desc:'Dudhsagar Waterfalls excursion. Palolem and Colva quiet beaches.'},{day:'Day 4',title:'Departure',desc:'Leisure morning, Mapusa Market shopping. Transfer to airport.'}] },
+  {id:'canada',name:'Canada — Maple & Mountains',dest:'Canada',region:'Americas',category:['International','Luxury','Group','Family'],badge:'Premium',price:'₹1,39,999',priceNum:139999,img:'https://images.unsplash.com/photo-1503614472-8c93d56e92ce?w=800&q=80',duration:'9N / 10D',type:'Group Tour',meals:'Daily Breakfast',visa:'Required',desc:'Canada is a land of breathtaking natural beauty — from the thundering Niagara Falls to the majestic Rocky Mountains of Banff and Jasper, the cosmopolitan cities of Toronto and Vancouver, and the French-speaking charm of Montreal. This carefully crafted Canada tour gives you the best of both the eastern and western provinces in one unforgettable journey.',highlights:['Niagara Falls boat tour (Maid of the Mist)','Banff National Park & Lake Louise','Jasper National Park glacier walk','CN Tower Toronto & city views','Vancouver Stanley Park & Granville','Montreal Old Town & Notre-Dame Basilica','Rocky Mountaineer scenic train (optional)','Canadian Rockies wildlife spotting'],itinerary:[{day:'Day 1-2',title:'Toronto & Niagara',desc:'Arrive Toronto. CN Tower, Kensington Market, waterfront. Day 2: Niagara Falls — Maid of the Mist boat, Journey Behind the Falls.'},{day:'Day 3',title:'Montreal',desc:'Fly to Montreal. Old Port, Notre-Dame Basilica, Mont Royal park, French cuisine.'},{day:'Day 4',title:'Quebec City',desc:'Day trip to Quebec City — Château Frontenac, Old Town UNESCO site, Plains of Abraham.'},{day:'Day 5',title:'Fly to Calgary',desc:'Fly to Calgary. Drive into the Rockies. Arrive Banff town, evening walk.'},{day:'Day 6',title:'Banff National Park',desc:'Lake Louise, Moraine Lake, Icefields Parkway drive, wildlife spotting for elk and bears.'},{day:'Day 7',title:'Jasper National Park',desc:'Columbia Icefield Glacier walkway, Athabasca Falls, Pyramid Lake.'},{day:'Day 8',title:'Vancouver',desc:'Fly to Vancouver. Stanley Park seawall, Granville Island market, Capilano suspension bridge.'},{day:'Day 9',title:'Victoria Island',desc:'Ferry to Victoria, BC — Butchart Gardens, inner harbour, afternoon tea tradition.'},{day:'Day 10',title:'Departure',desc:'Return to Vancouver airport for international departure.'}]},
+
+  {id:'greece',name:'Greece — Islands & Antiquity',dest:'Greece',region:'Europe',category:['International','Honeymoon','Luxury','Group'],badge:'Romantic',price:'₹94,999',priceNum:94999,img:'https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=800&q=80',duration:'7N / 8D',type:'Group & Couple',meals:'Daily Breakfast',visa:'Schengen Required',desc:'Greece is pure magic — whitewashed villages tumbling down volcanic cliffs above the Aegean Sea, ancient ruins that tell stories of gods and heroes, and crystal-clear waters in every shade of blue. This package covers Athens\' ancient Acropolis and the iconic islands of Santorini and Mykonos — a journey that is equal parts history, romance and paradise.',highlights:['Acropolis & Parthenon Athens','Santorini caldera sunset in Oia','Mykonos windmills & Little Venice','Delos archaeological island','Athens Plaka old neighbourhood','Blue Dome churches of Santorini','Greek cuisine — moussaka, fresh seafood','Sunset sailing cruise Santorini'],itinerary:[{day:'Day 1-2',title:'Athens',desc:'Arrive Athens. Acropolis, Parthenon, Erechtheion, Acropolis Museum. Day 2: Ancient Agora, Monastiraki flea market, Plaka neighbourhood.'},{day:'Day 3',title:'Ferry to Santorini',desc:'Ferry or flight to Santorini. Check in Oia or Fira. Evening caldera walk.'},{day:'Day 4',title:'Santorini',desc:'Red Beach, Black Beach, Akrotiri archaeological site. Sunset sailing cruise around caldera.'},{day:'Day 5',title:'Oia & Fira',desc:'Morning in Oia — blue dome churches, famous Oia sunset. Evening in Fira town.'},{day:'Day 6',title:'Mykonos',desc:'Ferry to Mykonos. Windmills, Little Venice, Chora town, beach clubs.'},{day:'Day 7',title:'Delos & Leisure',desc:'Optional Delos sacred island archaeological site. Afternoon beach leisure.'},{day:'Day 8',title:'Departure',desc:'Ferry back to Athens. Transfer to Athens International Airport for departure.'}]},
+
+  {id:'vietnam',name:'Vietnam Discovery',dest:'Vietnam',region:'Asia',category:['International','Group','Adventure'],badge:'Trending',price:'₹39,999',priceNum:39999,img:'https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=800&q=80',duration:'7N / 8D',type:'Group Tour',meals:'Daily Breakfast',visa:'On Arrival',desc:'Vietnam is one of Southeast Asia\'s most captivating destinations — ancient temples, UNESCO-listed Ha Long Bay, charming Hoi An ancient town, and vibrant street food culture in Hanoi and Ho Chi Minh City. This north-to-south journey covers the very best of this beautiful and affordable destination.',highlights:['Ha Long Bay overnight cruise','Hoi An Ancient Town lantern festival','My Son Hindu temple ruins','Ho Chi Minh City Cu Chi Tunnels','Hanoi Hoan Kiem Lake & Old Quarter','Mekong Delta river boat tour','Vietnamese cooking class','Hue Imperial Citadel'],itinerary:[{day:'Day 1-2',title:'Hanoi',desc:'Arrive Hanoi. Hoan Kiem Lake, Old Quarter streets, Ho Chi Minh Mausoleum complex, Temple of Literature.'},{day:'Day 3',title:'Ha Long Bay Cruise',desc:'Board overnight cruise in Ha Long Bay UNESCO site — kayaking through limestone caves, sunset on deck.'},{day:'Day 4',title:'Fly to Da Nang',desc:'Return to Hanoi. Fly to Da Nang. Marble Mountains, My Khe Beach.'},{day:'Day 5',title:'Hoi An',desc:'Ancient Town walking tour, lantern boat ride on Thu Bon River, tailor street, cycling through rice fields.'},{day:'Day 6',title:'Hue Imperial City',desc:'Drive to Hue — Imperial Citadel, Thien Mu Pagoda, Perfume River boat cruise.'},{day:'Day 7',title:'Ho Chi Minh City',desc:'Fly to HCMC. Cu Chi Tunnels, War Remnants Museum, Ben Thanh Market, Saigon street food.'},{day:'Day 8',title:'Departure',desc:'Morning Mekong Delta speedboat tour (optional). Airport transfer for departure.'}]},
+
+  {id:'srilanka',name:'Sri Lanka — Teardrop of India',dest:'Sri Lanka',region:'Asia',category:['International','Group','Family','Short'],badge:'Value',price:'₹29,999',priceNum:29999,img:'https://images.unsplash.com/photo-1590123715937-b3c39d40e32d?w=800&q=80',duration:'5N / 6D',type:'Group & Family',meals:'Daily Breakfast',visa:'On Arrival',desc:'Sri Lanka packs an astonishing variety into a small island — ancient Buddhist temples, misty tea plantations, roaming wild elephants, and pristine beaches with perfect surf. Just a short flight from Ahmedabad, Sri Lanka offers incredible value for money and is one of the friendliest destinations for Indian travelers.',highlights:['Sigiriya Lion Rock fortress UNESCO','Kandy Temple of the Sacred Tooth','Train through Ella tea country','Elephant safari Minneriya','Galle Dutch Fort UNESCO site','Whale watching Mirissa (seasonal)','Colombo city highlights','Bentota Beach & water sports'],itinerary:[{day:'Day 1',title:'Arrive Colombo',desc:'Arrive Colombo. City tour — Gangaramaya Temple, Galle Face promenade, Pettah market.'},{day:'Day 2',title:'Sigiriya',desc:'Drive to Sigiriya. Climb Sigiriya Lion Rock (UNESCO), Dambulla Cave Temple.'},{day:'Day 3',title:'Kandy',desc:'Kandy — Temple of the Sacred Tooth Relic, Kandyan dance show, botanical gardens.'},{day:'Day 4',title:'Ella by Train',desc:'Scenic train through tea country to Ella. Nine Arch Bridge, Little Adam\'s Peak hike.'},{day:'Day 5',title:'Mirissa Beach',desc:'Drive to Mirissa. Whale watching boat tour (seasonal). Unawatuna beach.'},{day:'Day 6',title:'Galle & Departure',desc:'Galle Dutch Fort walking tour. Transfer to Colombo airport for return flight.'}]},
+
+  {id:'goa',name:'Goa Beach Holiday',dest:'Goa, India',region:'India',category:['India','Short','Group','Family'],badge:'Fun',price:'₹12,999',priceNum:12999,img:'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?w=800&q=80',duration:'3N / 4D',type:'Group & Private',meals:'Daily Breakfast',visa:'Not Required',desc:'Goa — India\'s beach paradise. Sun, sea, stunning Portuguese heritage churches, vibrant markets and incredible seafood. Whether you want to party at Baga or relax at Palolem\'s quiet shores, Goa has something for everyone. This quick getaway from Ahmedabad is perfect for long weekends and short breaks.',highlights:['Baga & Calangute Beach','Water sports — parasailing & jet ski','Old Goa Portuguese churches','Anjuna flea market shopping','Sunset Mandovi river cruise','Casino cruise (optional)','Authentic Goan seafood cuisine','Dudhsagar Waterfalls excursion'],itinerary:[{day:'Day 1',title:'Arrive North Goa',desc:'Arrive Goa. Check in North Goa resort. Baga Beach, Calangute. Evening Anjuna market.'},{day:'Day 2',title:'Water Sports & Heritage',desc:'Morning water sports. Old Goa churches — Basilica of Bom Jesus. Sunset Mandovi river cruise.'},{day:'Day 3',title:'South Goa & Waterfall',desc:'Dudhsagar Waterfalls excursion. Palolem and Colva quiet beaches.'},{day:'Day 4',title:'Departure',desc:'Leisure morning, Mapusa Market shopping. Transfer to Goa airport.'}]},
+
+  {id:'rajasthan',name:'Rajasthan Royal Heritage',dest:'Rajasthan, India',region:'India',category:['India','Group','Family','Luxury'],badge:'Heritage',price:'₹14,999',priceNum:14999,img:'https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=800&q=80',duration:'6N / 7D',type:'Group & Private',meals:'Breakfast & Dinner',visa:'Not Required',desc:'Rajasthan is India\'s most regal state — a land of grand palaces, mighty forts, vibrant bazaars and colourful culture. The Golden Triangle of Jaipur, Jodhpur and Udaipur gives you the best of the Pink City, Blue City and the City of Lakes respectively. A must-do for anyone wanting to experience authentic royal India.',highlights:['Amber Fort Jaipur elephant ride','City Palace & Hawa Mahal Jaipur','Mehrangarh Fort Jodhpur','Jodhpur blue city walking tour','Lake Pichola boat ride Udaipur','City Palace Museum Udaipur','Pushkar Camel Fair (seasonal)','Traditional Rajasthani thali dinner'],itinerary:[{day:'Day 1-2',title:'Jaipur — Pink City',desc:'Arrive Jaipur. Amber Fort elephant ride, Jaigarh Fort. Day 2: City Palace, Hawa Mahal, Jantar Mantar, Johari Bazaar.'},{day:'Day 3',title:'Pushkar',desc:'Drive to Pushkar — Brahma Temple, Pushkar Lake, camel fair grounds, bazaar.'},{day:'Day 4',title:'Jodhpur — Blue City',desc:'Drive to Jodhpur. Mehrangarh Fort, Jaswant Thada, blue city walking tour.'},{day:'Day 5-6',title:'Udaipur — Lake City',desc:'Drive to Udaipur. City Palace, Lake Pichola boat ride, Jagdish Temple, Saheliyon Ki Bari.'},{day:'Day 7',title:'Departure',desc:'Morning Udaipur bazaar. Transfer to airport for departure.'}]},
+
+  {id:'himachal',name:'Himachal Pradesh — Hills & Snow',dest:'Himachal Pradesh, India',region:'India',category:['India','Adventure','Family','Short'],badge:'Scenic',price:'₹16,999',priceNum:16999,img:'https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=800&q=80',duration:'5N / 6D',type:'Group & Private',meals:'Daily Breakfast',visa:'Not Required',desc:'Himachal Pradesh is the crown of North India — with snow-capped peaks, pine-scented valleys, roaring rivers and charming hill towns. This package covers Shimla, Manali and Solang Valley — offering something for every traveler, from adventure seekers to families looking for a cool summer escape.',highlights:['Shimla Mall Road & toy train ride','Manali Rohtang Pass snow (seasonal)','Solang Valley skiing & zorbing','Hadimba Devi Temple Manali','Kullu Valley river rafting','Old Manali cafes & market','Hidimba forest walk','Apple orchard visits'],itinerary:[{day:'Day 1-2',title:'Shimla',desc:'Arrive Shimla. Mall Road, Jakhu Temple monkey forest, Kufri snow point. Optional toy train ride.'},{day:'Day 3',title:'Drive to Manali',desc:'Scenic Himalayan drive through Kullu Valley to Manali.'},{day:'Day 4',title:'Rohtang & Solang',desc:'Early morning Rohtang Pass (snow, seasonal, permit required). Afternoon Solang Valley — skiing, zorbing, cable car.'},{day:'Day 5',title:'Manali Sightseeing',desc:'Hadimba Temple, Manu Temple, Old Manali market, Great Himalayan National Park.'},{day:'Day 6',title:'Departure',desc:'Transfer to Bhuntar airport or drive to Chandigarh for departure.'}]},
+
+  {id:'oman',name:'Oman & Muscat Discovery',dest:'Oman',region:'Middle East',category:['International','Group','Luxury'],badge:'Hidden Gem',price:'₹49,999',priceNum:49999,img:'https://images.unsplash.com/photo-1583422409516-2895a77efded?w=800&q=80',duration:'5N / 6D',type:'Group Tour',meals:'Daily Breakfast',visa:'On Arrival',desc:'Oman is the Middle East\'s best-kept secret — a country of dramatic wadis, vast deserts, ancient forts and azure coastline. Unlike Dubai, Oman retains its authentic Arab character, making it a truly unique destination. This package covers the highlights of Muscat, Nizwa and the stunning Wahiba Sands desert.',highlights:['Sultan Qaboos Grand Mosque Muscat','Nizwa Fort & traditional souq','Wahiba Sands desert overnight camp','Wadi Shab emerald pool swimming','Mutrah Corniche & Silver Souq','Bimmah Sinkhole swim','Dhow cruise Muscat harbour','Traditional Omani cuisine'],itinerary:[{day:'Day 1-2',title:'Muscat',desc:'Arrive Muscat. Sultan Qaboos Grand Mosque, Royal Opera House, Mutrah Corniche & souq. Day 2: Bimmah Sinkhole, Wadi Shab swimming.'},{day:'Day 3',title:'Nizwa',desc:'Drive to Nizwa — historic fort, traditional Friday souq (goat market), Jibreen Castle.'},{day:'Day 4',title:'Wahiba Desert',desc:'Drive to Wahiba Sands — dune bashing, camel ride, overnight Bedouin camp under stars.'},{day:'Day 5',title:'Return Muscat',desc:'Morning desert sunrise. Drive back to Muscat. Afternoon shopping at City Centre Muscat.'},{day:'Day 6',title:'Departure',desc:'Transfer to Muscat International Airport for departure.'}]},
+
+  {id:'andaman',name:'Andaman — Tropical Islands',dest:'Andaman & Nicobar, India',region:'India',category:['India','Honeymoon','Family','Short'],badge:'Paradise',price:'₹22,999',priceNum:22999,img:'https://images.unsplash.com/photo-1559494007-9f5847c49d94?w=800&q=80',duration:'5N / 6D',type:'Group & Private',meals:'Daily Breakfast',visa:'Not Required',desc:'The Andaman Islands are India\'s tropical paradise — with powder-white beaches, crystal-clear waters and some of the best snorkeling and scuba diving in all of Asia. Located in the Bay of Bengal, the Andamans feel like a Southeast Asian island destination but are easily accessible from the Indian mainland without needing a passport.',highlights:['Radhanagar Beach (Asia\'s best beach)','Cellular Jail sound & light show','Snorkeling at Elephant Beach','Scuba diving at North Bay Island','Glass-bottom boat ride','Neil Island day trip','Baratang Limestone Caves','Havelock Island turquoise waters'],itinerary:[{day:'Day 1',title:'Arrive Port Blair',desc:'Arrive Port Blair. Cellular Jail, Ross Island, evening sound and light show.'},{day:'Day 2',title:'Havelock Island',desc:'Ferry to Havelock. Radhanagar Beach (Asia\'s best), Elephant Beach snorkeling.'},{day:'Day 3',title:'Havelock Leisure',desc:'Scuba diving at Nemo Reef (beginner friendly), Kalapathar Beach sunrise.'},{day:'Day 4',title:'Neil Island',desc:'Ferry to Neil Island. Natural Bridge, Bharatpur Beach, Laxmanpur sunset.'},{day:'Day 5',title:'Port Blair Sightseeing',desc:'North Bay Island — glass-bottom boat, Samudrika Marine Museum, Chatham Saw Mill.'},{day:'Day 6',title:'Departure',desc:'Transfer to Port Blair airport for return flight.'}]},
 ];
 
-let currentModalPkg = null;
+let currentModalPkg=null;
 
-function renderPackages(filter='All') {
-  const grid = document.getElementById('packages-grid');
-  let filtered = filter==='All' ? packages : packages.filter(p=>p.category.includes(filter));
-  if(!filtered.length) filtered = packages.slice(0,8);
-  const show = filtered.slice(0,9);
-  grid.innerHTML = show.map(p=>`
-    <div class="pkg-card reveal visible" onclick="openPkgModal('${p.id}')">
+function renderPackages(filter='All'){
+  const grid=document.getElementById('packages-grid');
+  let filtered=filter==='All'?packages:packages.filter(p=>p.category.includes(filter));
+  if(!filtered.length)filtered=packages.slice(0,9);
+  const show=filtered.slice(0,9);
+  grid.innerHTML=show.map(p=>`
+    <div class="pkg-card" onclick="openPkgModal('${p.id}')">
       <div class="pkg-img"><img src="${p.img}" alt="${p.name}" loading="lazy"><div class="pkg-badge">${p.badge}</div></div>
       <div class="pkg-body">
         <div class="pkg-dest">${p.dest}</div>
@@ -697,98 +611,96 @@ function renderPackages(filter='All') {
     </div>`).join('');
 }
 
-function showAllPkgs() { renderPackages('All'); }
+function showAllPkgs(){renderPackages('All');}
 
-function filterPkg(filter, btn) {
-  if(btn) { document.querySelectorAll('.pkg-tab').forEach(t=>t.classList.remove('active')); btn.classList.add('active'); }
+function filterPkg(filter,btn){
+  if(btn){document.querySelectorAll('.pkg-tab').forEach(t=>t.classList.remove('active'));btn.classList.add('active');}
   document.getElementById('packages').scrollIntoView({behavior:'smooth'});
   renderPackages(filter);
 }
 
-function showDestPanel(id, btn) {
+function showDestPanel(id,btn){
   document.querySelectorAll('.dest-panel').forEach(p=>p.classList.remove('active'));
   document.querySelectorAll('.dest-tab').forEach(t=>t.classList.remove('active'));
-  const panel = document.getElementById('dp-'+id);
-  if(panel) panel.classList.add('active');
-  if(btn) btn.classList.add('active');
+  const panel=document.getElementById('dp-'+id);
+  if(panel)panel.classList.add('active');
+  if(btn)btn.classList.add('active');
   document.getElementById('destinations').scrollIntoView({behavior:'smooth'});
 }
 
-function filterDest(region) {
-  const map = {'India':'india','Asia':'asia','Europe':'europe','Middle East':'middleeast','Africa':'africa','Americas':'americas','Australia':'americas'};
-  const id = map[region]||'all';
-  showDestPanel(id, null);
-}
-
-function openPkgModal(id) {
-  const p = packages.find(x=>x.id===id);
-  if(!p) return;
-  currentModalPkg = p;
-  document.getElementById('modal-img').src = p.img;
-  document.getElementById('modal-title').textContent = p.name;
-  document.getElementById('modal-dest-label').textContent = '📍 '+p.dest;
-  document.getElementById('modal-duration').textContent = p.duration;
-  document.getElementById('modal-type').textContent = p.type;
-  document.getElementById('modal-meals').textContent = p.meals;
-  document.getElementById('modal-visa').textContent = p.visa;
-  document.getElementById('modal-desc').textContent = p.desc;
-  document.getElementById('modal-price').innerHTML = p.price+'<span> / person</span>';
-  document.getElementById('modal-highlights').innerHTML = p.highlights.map(h=>`<div class="highlight-item">${h}</div>`).join('');
-  document.getElementById('modal-itinerary').innerHTML = p.itinerary.map(d=>`<div class="itin-day"><div class="itin-day-title">${d.day}: ${d.title}</div><div class="itin-day-desc">${d.desc}</div></div>`).join('');
-  const msg = encodeURIComponent(`Hi! I am interested in the ${p.name} package (${p.dest}, ${p.price}). Please share more details.`);
-  document.getElementById('modal-wa').href = `https://wa.me/${WA}?text=${msg}`;
+function openPkgModal(id){
+  const p=packages.find(x=>x.id===id);
+  if(!p)return;
+  currentModalPkg=p;
+  document.getElementById('modal-img').src=p.img;
+  document.getElementById('modal-title').textContent=p.name;
+  document.getElementById('modal-dest-label').textContent='📍 '+p.dest;
+  document.getElementById('modal-duration').textContent=p.duration;
+  document.getElementById('modal-type').textContent=p.type;
+  document.getElementById('modal-meals').textContent=p.meals;
+  document.getElementById('modal-visa').textContent=p.visa;
+  document.getElementById('modal-desc').textContent=p.desc;
+  document.getElementById('modal-price').innerHTML=p.price+'<span> / person</span>';
+  document.getElementById('modal-highlights').innerHTML=p.highlights.map(h=>`<div class="highlight-item">${h}</div>`).join('');
+  document.getElementById('modal-itinerary').innerHTML=p.itinerary.map(d=>`<div class="itin-day"><div class="itin-day-title">${d.day}: ${d.title}</div><div class="itin-day-desc">${d.desc}</div></div>`).join('');
+  const msg=encodeURIComponent(`Hi! I am interested in the ${p.name} package (${p.dest}, ${p.price}). Please share more details.`);
+  document.getElementById('modal-wa').href=`https://wa.me/${WA}?text=${msg}`;
   document.getElementById('pkg-modal').classList.add('open');
   document.body.style.overflow='hidden';
 }
 
-function closePkgModal() { document.getElementById('pkg-modal').classList.remove('open'); document.body.style.overflow=''; }
-function closeModal(e) { if(e.target===document.getElementById('pkg-modal')) closePkgModal(); }
+function closePkgModal(){document.getElementById('pkg-modal').classList.remove('open');document.body.style.overflow='';}
+function closeModal(e){if(e.target===document.getElementById('pkg-modal'))closePkgModal();}
 
-function openEnquiryFromModal() {
-  if(currentModalPkg) {
-    const msg = encodeURIComponent(`Hi! I want to enquire about: ${currentModalPkg.name} (${currentModalPkg.dest}) - ${currentModalPkg.price}. Please call me back.`);
+function openEnquiryFromModal(){
+  if(currentModalPkg){
+    const msg=encodeURIComponent(`Hi! I want to enquire about: ${currentModalPkg.name} (${currentModalPkg.dest}) - ${currentModalPkg.price}. Please call me back.`);
     window.open(`https://wa.me/${WA}?text=${msg}`,'_blank');
   }
 }
 
-function openEnquiry(name, dest, price) {
-  const msg = encodeURIComponent(`Hi! I am interested in a holiday package to ${dest}. Please share details and pricing.`);
+function openEnquiry(name,dest){
+  const msg=encodeURIComponent(`Hi! I am interested in a holiday package to ${dest}. Please share details and pricing.`);
   window.open(`https://wa.me/${WA}?text=${msg}`,'_blank');
 }
 
-function doSearch() {
-  const dest = document.getElementById('search-dest').value.trim();
-  if(dest) { const msg = encodeURIComponent(`Hi! I am looking for a holiday package to ${dest}. Please help me plan my trip.`); window.open(`https://wa.me/${WA}?text=${msg}`,'_blank'); }
-  else { document.getElementById('packages').scrollIntoView({behavior:'smooth'}); }
+function doSearch(){
+  const dest=document.getElementById('search-dest').value.trim();
+  if(dest){const msg=encodeURIComponent(`Hi! I am looking for a holiday package to ${dest}. Please help me plan my trip.`);window.open(`https://wa.me/${WA}?text=${msg}`,'_blank');}
+  else{document.getElementById('packages').scrollIntoView({behavior:'smooth'});}
 }
 
-function ctaCallback() {
-  const phone = document.getElementById('cta-phone').value.trim();
-  if(phone) { const msg = encodeURIComponent(`Hi! My number is ${phone}. Please call me back regarding a holiday package.`); window.open(`https://wa.me/${WA}?text=${msg}`,'_blank'); }
-  else { alert('Please enter your phone number.'); }
+function ctaCallback(){
+  const phone=document.getElementById('cta-phone').value.trim();
+  if(phone){const msg=encodeURIComponent(`Hi! My number is ${phone}. Please call me back regarding a holiday package.`);window.open(`https://wa.me/${WA}?text=${msg}`,'_blank');}
+  else{alert('Please enter your phone number.');}
 }
 
+// Search tabs
 document.querySelectorAll('.stab').forEach(tab=>{
-  tab.addEventListener('click',()=>{ document.querySelectorAll('.stab').forEach(t=>t.classList.remove('active')); tab.classList.add('active'); });
+  tab.addEventListener('click',()=>{document.querySelectorAll('.stab').forEach(t=>t.classList.remove('active'));tab.classList.add('active');});
 });
 
-const revealObs = new IntersectionObserver(entries=>{ entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); }); },{threshold:0.1});
-document.querySelectorAll('.reveal').forEach(el=>revealObs.observe(el));
+// Scroll animations — safe IntersectionObserver
+const animObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');animObs.unobserve(e.target);}});
+},{threshold:0.12,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.fade-up,.fade-left,.fade-right,.scale-in').forEach(el=>animObs.observe(el));
 
-const counterObs = new IntersectionObserver(entries=>{
+// Counter animation
+const counterObs=new IntersectionObserver(entries=>{
   entries.forEach(entry=>{
     if(entry.isIntersecting){
-      const el=entry.target, target=parseInt(el.dataset.target); let start=0;
+      const el=entry.target,target=parseInt(el.dataset.target);let start=0;
       const step=target/60;
-      const timer=setInterval(()=>{ start+=step; if(start>=target){el.textContent=target>=1000?(target/1000)+'K+':target+'+';clearInterval(timer);}else{el.textContent=target>=1000?Math.floor(start/1000)+'K+':Math.floor(start)+'+';} },20);
+      const timer=setInterval(()=>{start+=step;if(start>=target){el.textContent=target>=1000?(target/1000)+'K+':target+'+';clearInterval(timer);}else{el.textContent=target>=1000?Math.floor(start/1000)+'K+':Math.floor(start)+'+';}},20);
       counterObs.unobserve(el);
     }
   });
 },{threshold:0.5});
 document.querySelectorAll('.stat-num[data-target]').forEach(el=>counterObs.observe(el));
 
-document.addEventListener('keydown',e=>{ if(e.key==='Escape') closePkgModal(); });
-
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closePkgModal();});
 renderPackages('All');
 </script>
 </body>
